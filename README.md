@@ -1,6 +1,8 @@
 slow-zone
 =========
 
+[![Build Status](https://travis-ci.org/banterability/slow-zone.svg?branch=master)](https://travis-ci.org/banterability/slow-zone)
+
 A client & wrapper for CTA 'L' arrival data.
 
 
