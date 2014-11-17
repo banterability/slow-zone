@@ -1,0 +1,42 @@
+{
+  "name": "slow-zone",
+  "version": "1.0.0",
+  "dependencies": {
+    "dateline": "^1.2.0",
+    "request": "^2.45.0",
+    "underscore": "^1.7.0",
+    "xml2js": "^0.4.4"
+  },
+  "devDependencies": {
+    "assertive": "^1.4.0",
+    "bondjs": "^1.2.1",
+    "coffee-script": "~1.8.0",
+    "mocha": "^1.21.4",
+    "timekeeper": "0.0.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "description": "A client & wrapper for CTA 'L' arrival data.",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/banterability/slow-zone"
+  },
+  "author": "Jeff Long",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/banterability/slow-zone/issues"
+  },
+  "homepage": "https://github.com/banterability/slow-zone",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "cta",
+    "subway",
+    "chicago",
+    "l",
+    "pubic transit"
+  ]
+}
