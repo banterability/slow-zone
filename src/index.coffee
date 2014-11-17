@@ -31,9 +31,10 @@ class SlowZone
           return callback new Error "#{result.ctatt.errCd} – #{result.ctatt.errNm}"
 
         predictions = result.ctatt?.eta
+        return callback err, [] unless predictions
+
         predictions = [predictions] unless isArray(predictions)
         response = ((new Train trainData).toHash() for trainData in predictions)
-
         callback err, response
 
 module.exports = SlowZone
