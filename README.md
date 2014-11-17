@@ -29,9 +29,7 @@ sz = new SlowZone({apiKey: 'afafafafafafafafafafafafafafafaf'});
 | Key | Value | Required? |
 | `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values. |
 | `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a predicted train. |
+| `callback` | (Function) Executed after the API request. Recieves two arguments: `err`: An error object if something goes wrong, `null` otherwise; `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
 # Logan Square: 41020
@@ -45,9 +43,7 @@ sz.arrivals.byStation(41020, {}, function(err, data){
 | Key | Value | Required? |
 | `stopId` | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values. |
 | `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a predicted train. |
+| `callback` | (Function) Executed after the API request. Recieves two arguments: `err`: An error object if something goes wrong, `null` otherwise; `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
 # Merchandise Mart, Southbound Platform: 30091
@@ -63,9 +59,7 @@ sz.arrivals.byStop(30091, {rt: 'Brn'}, function(err, data){
 
 | Key | Value | Required? |
 | `runId` | (Integer) A train run ID. Likely something you got from one of the above API requests. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a station stop. |
+| `callback` | (Function) Executed after the API request. Recieves two arguments: `err`: An error object if something goes wrong, `null` otherwise; `data`: An array of objects, each describing a station stop. |
 
 ```javascript
 # Merchandise Mart, Southbound Platform: 30091
