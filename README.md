@@ -1,10 +1,8 @@
-slow-zone
-=========
+# slow-zone
 
 [![Build Status](https://travis-ci.org/banterability/slow-zone.svg?branch=master)](https://travis-ci.org/banterability/slow-zone)
 
 A client & wrapper for CTA 'L' arrival data.
-
 
 ## Installation
 
@@ -12,27 +10,27 @@ A client & wrapper for CTA 'L' arrival data.
 $ npm install slow-zone
 ```
 
-
 ## Usage
 
 Make sure you have a [CTA Train Tracker API Key][1].
 
 ```javascript
-var SlowZone = require('slow-zone');
-sz = new SlowZone({apiKey: 'afafafafafafafafafafafafafafafaf'});
+var SlowZone = require("slow-zone");
+sz = new SlowZone({apiKey: "afafafafafafafafafafafafafafafaf"});
 ```
 
 ### Arrivals
 
 #### `SlowZone.arrivals.byStation(stationId, options, callback)`
 
-| Key | Value | Required? |
-| --- | ----- | --------- |
-| `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values. |
-| `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a predicted train. |
+| Key         | Value                                                                                                             | Required? |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
+| `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values.                                  |
+| `options`   | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
+| `callback`  | (Function) Executed after the API request. Recieves two arguments:                                                |
+
+* `err`: An error object if something goes wrong; `null` otherwise.
+* `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
 # Logan Square: 41020
@@ -43,13 +41,14 @@ sz.arrivals.byStation(41020, {}, function(err, data){
 
 #### `SlowZone.arrivals.byStop(stopId, options, callback)`
 
-| Key | Value | Required? |
-| --- | ----- | --------- |
-| `stopId` | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values. |
-| `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a predicted train. |
+| Key        | Value                                                                                                             | Required? |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
+| `stopId`   | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values.                                     |
+| `options`  | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
+| `callback` | (Function) Executed after the API request. Recieves two arguments:                                                |
+
+* `err`: An error object if something goes wrong; `null` otherwise.
+* `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
 # Merchandise Mart, Southbound Platform: 30091
@@ -63,12 +62,13 @@ sz.arrivals.byStop(30091, {rt: 'Brn'}, function(err, data){
 
 #### `SlowZone.follow.train(runId, callback)`
 
-| Key | Value | Required? |
-| --- | ----- | --------- |
-| `runId` | (Integer) A train run ID. Likely something you got from one of the above API requests. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:
-  - `err`: An error object if something goes wrong; `null` otherwise.
-  - `data`: An array of objects, each describing a station stop. |
+| Key        | Value                                                                                  | Required? |
+| ---------- | -------------------------------------------------------------------------------------- | --------- |
+| `runId`    | (Integer) A train run ID. Likely something you got from one of the above API requests. |
+| `callback` | (Function) Executed after the API request. Recieves two arguments:                     |
+
+* `err`: An error object if something goes wrong; `null` otherwise.
+* `data`: An array of objects, each describing a station stop. |
 
 ```javascript
 # Merchandise Mart, Southbound Platform: 30091
@@ -128,18 +128,18 @@ Slow Zone decorates the response from the CTA API to speed up common tasks. Note
 
 Data about the final destination of the predicted train:
 
-| Key                | Value |
-| ------------------ | ----- |
+| Key                | Value                                                          |
+| ------------------ | -------------------------------------------------------------- |
 | `destination.id`   | (Integer) The GTFS station ID of the final destination station |
-| `destination.name` | (String) The name of the final destination station |
+| `destination.name` | (String) The name of the final destination station             |
 
 #### Location
 
 Data about the predicted train's current location:
 
-| Key                  | Value |
-| ------------------ | ----- |
-| `location.latitude`  | (Float) The current latitude of the train |
+| Key                  | Value                                      |
+| -------------------- | ------------------------------------------ |
+| `location.latitude`  | (Float) The current latitude of the train  |
 | `location.longitude` | (Float) The current longitude of the train |
 | `location.heading`   | (Integer) The current heading of the train |
 
@@ -147,48 +147,47 @@ Data about the predicted train's current location:
 
 The prediction itself, in a number of formats:
 
-| Key                         | Value |
-| --------------------------- | ----- |
-| `prediction.arrivalMinutes` | (Integer) The number of minutes until the train arrives at the station, rounded to the nearest minute |
+| Key                         | Value                                                                                                                                         |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `prediction.arrivalMinutes` | (Integer) The number of minutes until the train arrives at the station, rounded to the nearest minute                                         |
 | `prediction.arrivalString`  | (String) A user-friendly string of the time a train is expected to arrive. Formatted by [Dateline](https://github.com/banterability/dateline) |
-| `prediction.arrivalTime`    | (Date) The date & time the train is predicted to arrive at the station |
-| `prediction.predictionAge`  | (Integer) The number of seconds that have elapsed since the prediction was made |
-| `prediction.predictionTime` | (Date) The date & time when the prediction was generated |
+| `prediction.arrivalTime`    | (Date) The date & time the train is predicted to arrive at the station                                                                        |
+| `prediction.predictionAge`  | (Integer) The number of seconds that have elapsed since the prediction was made                                                               |
+| `prediction.predictionTime` | (Date) The date & time when the prediction was generated                                                                                      |
 
 #### Route
 
 Data about the predicted train's route:
 
-| Key                 | Value |
-| ------------------- | ----- |
-| `route.class`       | (String) The name of the route, lowercased for consistency |
+| Key                 | Value                                                                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route.class`       | (String) The name of the route, lowercased for consistency                                                                                      |
 | `route.directionId` | (Integer) The directionality of the run. See the documentation for specifics, but as a general rule: `1` is north & west, `5` is south and east |
-| `route.id`          | (String) The CTA ID for the route |
-| `route.name`        | (String) The name (color) of the route |
-| `route.run`         | (Integer) A unique (that day) identifer for the run |
+| `route.id`          | (String) The CTA ID for the route                                                                                                               |
+| `route.name`        | (String) The name (color) of the route                                                                                                          |
+| `route.run`         | (Integer) A unique (that day) identifer for the run                                                                                             |
 
 #### Station
 
 Data about the station the prediction is relative to:
 
-| Key            | Value |
-| -------------- | ----- |
-| `station.id`   | (Integer) The GTFS station ID of the station the prediction is relative to |
-| `station.name` | (String) The name of the station the prediction is relative to |
-| `station.stop.id`          | (Integer) The GTFS stop ID of the stop the prediction is relative to |
-| `station.stop.description` | (String) A description of the stop the prediction is relative to. Usually in the format "Service at ___ platform" |
+| Key                        | Value                                                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `station.id`               | (Integer) The GTFS station ID of the station the prediction is relative to                                           |
+| `station.name`             | (String) The name of the station the prediction is relative to                                                       |
+| `station.stop.id`          | (Integer) The GTFS stop ID of the stop the prediction is relative to                                                 |
+| `station.stop.description` | (String) A description of the stop the prediction is relative to. Usually in the format "Service at \_\_\_ platform" |
 
 #### Status
 
 Flags that may affect the reliablity or contextof a prediction:
 
-| Key                  | Value |
-| -------------------- | ----- |
-| `status.approaching` | (Boolean) Indicates that a train is approaching the station |
-| `status.delayed`     | (Boolean) Indicates that a train has not reached the next waypoint by the time the prediction expected and it may no longer be accurate |
-| `status.faulty`      | (Boolean) Indicates an issue with the train tracker system that prevents a prediction from being made |
+| Key                  | Value                                                                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `status.approaching` | (Boolean) Indicates that a train is approaching the station                                                                               |
+| `status.delayed`     | (Boolean) Indicates that a train has not reached the next waypoint by the time the prediction expected and it may no longer be accurate   |
+| `status.faulty`      | (Boolean) Indicates an issue with the train tracker system that prevents a prediction from being made                                     |
 | `status.scheduled`   | (Boolean) Indicates that a prediction is based on the preset schedule, not a train in motion. Frequently seen at the start & end of lines |
-
 
 ## Development
 
