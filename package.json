@@ -32,5 +32,11 @@
   "directories": {
     "test": "test"
   },
-  "keywords": ["cta", "subway", "chicago", "l", "public transit"]
+  "keywords": [
+    "cta",
+    "subway",
+    "chicago",
+    "l",
+    "public transit"
+  ]
 }
