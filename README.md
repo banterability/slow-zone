@@ -33,8 +33,8 @@ sz = new SlowZone({apiKey: "afafafafafafafafafafafafafafafaf"});
 * `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
-# Logan Square: 41020
-sz.arrivals.byStation(41020, {}, function(err, data){
+// Logan Square: 41020
+sz.arrivals.byStation(41020, {}, function(err, data) {
   // …do something
 });
 ```
@@ -51,9 +51,9 @@ sz.arrivals.byStation(41020, {}, function(err, data){
 * `data`: An array of objects, each describing a predicted train. |
 
 ```javascript
-# Merchandise Mart, Southbound Platform: 30091
-# Example using options to only return Brown Line trains
-sz.arrivals.byStop(30091, {rt: 'Brn'}, function(err, data){
+// Merchandise Mart, Southbound Platform: 30091
+// Example using options to only return Brown Line trains
+sz.arrivals.byStop(30091, {rt: "Brn"}, function(err, data) {
   // …do something
 });
 ```
@@ -71,9 +71,9 @@ sz.arrivals.byStop(30091, {rt: 'Brn'}, function(err, data){
 * `data`: An array of objects, each describing a station stop. |
 
 ```javascript
-# Merchandise Mart, Southbound Platform: 30091
-# Example using options to only return Brown Line trains
-sz.follow.train(410, function(err, data){
+// Merchandise Mart, Southbound Platform: 30091
+// Example using options to only return Brown Line trains
+sz.follow.train(410, function(err, data) {
   // …do something
 });
 ```
