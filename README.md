@@ -192,12 +192,10 @@ Flags that may affect the reliablity or contextof a prediction:
 
 ## Development
 
-| Command       | Description                                  |
-| ------------- | -------------------------------------------- |
-| `make build`  | Compile Coffeescript to Javascript in `/lib` |
-| `npm install` | Install dependencies                         |
-| `npm test`    | Run tests                                    |
-
+| Command       | Description          |
+| ------------- | -------------------- |
+| `npm install` | Install dependencies |
+| `npm test`    | Run tests            |
 
 [1]: http://www.transitchicago.com/developers/traintrackerapply.aspx
 [2]: http://www.transitchicago.com/assets/1/developer_center/cta_Train_Tracker_API_documentation_v1_42.pdf
