@@ -1,4 +1,4 @@
-COFFEE=./node_modules/coffee-script/bin/coffee
+COFFEE=./node_modules/coffeescript/bin/coffee
 
 usage:
 	@echo ''
