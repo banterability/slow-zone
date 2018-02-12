@@ -31,13 +31,7 @@
   "directories": {
     "test": "test"
   },
-  "keywords": [
-    "cta",
-    "subway",
-    "chicago",
-    "l",
-    "public transit"
-  ]
+  "keywords": ["cta", "subway", "chicago", "l", "public transit"],
   "jest": {
     "testMatch": ["**/*_test.js"]
   }
