@@ -22,11 +22,19 @@ jobs:
       - restore_cache:
           key: npm-cache-{{ checksum "package.json" }}
 
-      - run: npm install
+      - run:
+        name: install
+        command: npm install
 
       - save_cache:
           key: npm-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
 
-      - run: npm test
+      - run:
+        name: test
+        command: npm test -- --coverage
+
+      - store_artifacts:
+        path: coverage
+        prefix: coverage
