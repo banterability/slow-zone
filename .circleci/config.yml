@@ -23,8 +23,8 @@ jobs:
           key: npm-cache-{{ checksum "package.json" }}
 
       - run:
-        name: install
-        command: npm install
+          name: install
+          command: npm install
 
       - save_cache:
           key: npm-cache-{{ checksum "package.json" }}
@@ -32,9 +32,9 @@ jobs:
             - node_modules
 
       - run:
-        name: test
-        command: npm test -- --coverage
+          name: test
+          command: npm test -- --coverage
 
       - store_artifacts:
-        path: coverage
-        prefix: coverage
+          path: coverage
+          prefix: coverage
