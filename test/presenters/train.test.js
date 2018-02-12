@@ -1,8 +1,10 @@
 const bond = require("bondjs");
 const Dateline = require("dateline");
 const timekeeper = require("timekeeper");
+const {loadJSONMock} = require("../helpers");
+const mockTrain = loadJSONMock("train.json");
 
-const Train = require("../../../lib/presenters/train");
+const Train = require("../../lib/presenters/train");
 
 const trainWithAttributes = attributes => new Train(attributes);
 
@@ -338,6 +340,21 @@ describe("Train", () => {
       const t = trainWithAttributes({stpDe: "Service at Inner Loop platform"});
 
       expect(t.stopDescription()).toBe("Service at Inner Loop platform");
+    });
+  });
+
+  describe("toHash", () => {
+    beforeAll(() => {
+      timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
+    });
+
+    afterAll(() => {
+      timekeeper.reset();
+    });
+
+    test("returns all attributes", () => {
+      const train = new Train(mockTrain).toHash();
+      expect(train).toMatchSnapshot();
     });
   });
 });

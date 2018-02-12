@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Train toHash returns all attributes 1`] = `
+Object {
+  "destination": Object {
+    "id": 30182,
+    "name": "Midway",
+  },
+  "location": Object {
+    "heading": 269,
+    "latitude": 41.87685,
+    "longitude": -87.6327,
+  },
+  "prediction": Object {
+    "arrivalMinutes": 1,
+    "arrivalString": "2:50 p.m.",
+    "arrivalTime": 2014-10-07T19:50:27.000Z,
+    "predictionAge": 90,
+    "predictionTime": 2014-10-07T19:49:27.000Z,
+  },
+  "route": Object {
+    "class": "orange",
+    "directionId": 5,
+    "id": "Org",
+    "name": "Orange",
+    "run": 715,
+  },
+  "station": Object {
+    "id": 40160,
+    "name": "LaSalle/Van Buren",
+    "stop": Object {
+      "description": "Service at Inner Loop platform",
+      "id": 30031,
+    },
+  },
+  "status": Object {
+    "approaching": true,
+    "delayed": false,
+    "faulty": false,
+    "scheduled": false,
+  },
+}
+`;
