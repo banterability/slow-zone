@@ -1,6 +1,6 @@
 {
   "name": "slow-zone",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "dependencies": {
     "dateline": "^2.1.0",
     "request": "^2.83.0",
