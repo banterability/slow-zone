@@ -28,5 +28,11 @@
     "url": "https://github.com/banterability/slow-zone/issues"
   },
   "homepage": "https://github.com/banterability/slow-zone",
-  "keywords": ["cta", "subway", "chicago", "l", "public transit"]
+  "keywords": [
+    "cta",
+    "subway",
+    "chicago",
+    "l",
+    "public transit"
+  ]
 }
