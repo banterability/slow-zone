@@ -1,4 +1,3 @@
-const assert = require("assertive");
 const bond = require("bondjs");
 const Dateline = require("dateline");
 const timekeeper = require("timekeeper");
@@ -19,103 +18,101 @@ const trainWithStubbedMethod = function([stubbedMethods]) {
 describe("Train", () => {
   describe("boolean fields", () => {
     describe("isApproaching", () => {
-      it("returns true if train is approaching", () => {
+      test("returns true if train is approaching", () => {
         const t = trainWithAttributes({isApp: "1"});
 
-        assert.truthy(t.isApproaching());
+        expect(t.isApproaching()).toBe(true);
       });
 
-      it("returns false if train is not approaching", () => {
+      test("returns false if train is not approaching", () => {
         const t = trainWithAttributes({isApp: "0"});
 
-        assert.falsey(t.isApproaching());
+        expect(t.isApproaching()).toBe(false);
       });
     });
 
     describe("isDelayed", () => {
-      it("returns true if train is delayed", () => {
+      test("returns true if train is delayed", () => {
         const t = trainWithAttributes({isDly: "1"});
 
-        assert.truthy(t.isDelayed());
+        expect(t.isDelayed()).toBe(true);
       });
 
-      it("returns false if train is not delayed", () => {
+      test("returns false if train is not delayed", () => {
         const t = trainWithAttributes({isDly: "0"});
 
-        assert.falsey(t.isDelayed());
+        expect(t.isDelayed()).toBe(false);
       });
     });
 
     describe("isFaulty", () => {
-      it("returns true if train is faulty", () => {
+      test("returns true if train is faulty", () => {
         const t = trainWithAttributes({isFlt: "1"});
 
-        assert.truthy(t.isFaulty());
+        expect(t.isFaulty()).toBe(true);
       });
 
-      it("returns false if train is not faulty", () => {
+      test("returns false if train is not faulty", () => {
         const t = trainWithAttributes({isFlt: "0"});
 
-        assert.falsey(t.isFaulty());
+        expect(t.isFaulty()).toBe(false);
       });
     });
 
     describe("isScheduled", () => {
-      it("returns true if train is scheduled", () => {
+      test("returns true if train is scheduled", () => {
         const t = trainWithAttributes({isSch: "1"});
 
-        assert.truthy(t.isScheduled());
+        expect(t.isScheduled()).toBe(true);
       });
 
-      it("returns false if train is not scheduled", () => {
+      test("returns false if train is not scheduled", () => {
         const t = trainWithAttributes({isSch: "0"});
 
-        assert.falsey(t.isScheduled());
+        expect(t.isScheduled()).toBe(false);
       });
     });
   });
 
   describe("date fields", () => {
     describe("arrivalTime", () => {
-      it("returns a native Date object", () => {
+      test("returns a native Date object", () => {
         const t = trainWithAttributes({arrT: "20141007 14:50:27"});
         const expected = new Date(2014, 9, 7, 14, 50, 27);
         const actual = t.arrivalTime();
 
-        assert.hasType(Date, actual);
-        assert.equal(expected.getTime(), actual.getTime());
+        expect(actual.getTime()).toBe(expected.getTime());
       });
     });
 
     describe("predictionTime", () => {
-      it("returns a native Date object", () => {
+      test("returns a native Date object", () => {
         const t = trainWithAttributes({prdt: "20141007 14:49:27"});
         const expected = new Date(2014, 9, 7, 14, 49, 27);
         const actual = t.predictionTime();
 
-        assert.hasType(Date, actual);
-        assert.equal(expected.getTime(), actual.getTime());
+        expect(actual.getTime()).toBe(expected.getTime());
       });
     });
   });
 
   describe("floating point fields", () => {
-    it("converts latitude to a float", () => {
+    test("converts latitude to a float", () => {
       const t = trainWithAttributes({lat: "41.87685"});
 
-      assert.equal(41.87685, t.latitude());
+      expect(t.latitude()).toBe(41.87685);
     });
 
-    it("converts longitude to a float", () => {
+    test("converts longitude to a float", () => {
       const t = trainWithAttributes({lon: "-87.6327"});
 
-      assert.equal(-87.6327, t.longitude());
+      expect(t.longitude()).toBe(-87.6327);
     });
   });
 
   describe("generated fields", () => {
     describe("arrivalMinutes", () => {
-      it("converts time difference to minutes", () => {
+      test("converts time difference to minutes", () => {
         const t = trainWithStubbedMethod([
           {
             arrivalTime: new Date(2014, 1, 1, 12, 5, 0),
@@ -123,10 +120,10 @@ describe("Train", () => {
           }
         ]);
 
-        assert.equal(5, t.arrivalMinutes());
+        expect(t.arrivalMinutes()).toBe(5);
       });
 
-      it("rounds down at < 30 seconds", () => {
+      test("rounds down at < 30 seconds", () => {
         const t = trainWithStubbedMethod([
           {
             arrivalTime: new Date(2014, 1, 1, 12, 1, 29),
@@ -134,10 +131,10 @@ describe("Train", () => {
           }
         ]);
 
-        assert.equal(1, t.arrivalMinutes());
+        expect(t.arrivalMinutes()).toBe(1);
       });
 
-      it("rounds up at > 30 seconds", () => {
+      test("rounds up at > 30 seconds", () => {
         const t = trainWithStubbedMethod([
           {
             arrivalTime: new Date(2014, 1, 1, 12, 1, 31),
@@ -145,202 +142,202 @@ describe("Train", () => {
           }
         ]);
 
-        assert.equal(2, t.arrivalMinutes());
+        expect(t.arrivalMinutes()).toBe(2);
       });
     });
 
     describe("arrivalString", () => {
-      it("calls Dateline for formatting", () => {
+      test("calls Dateline for formatting", () => {
         const testTime = new Date();
         const t = trainWithStubbedMethod([{arrivalTime: testTime}]);
         const expected = Dateline(testTime).getAPTime();
 
-        assert.equal(expected, t.arrivalString());
+        expect(t.arrivalString()).toBe(expected);
       });
     });
 
     describe("predictionAge", () => {
-      before(() => {
+      beforeAll(() => {
         timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
       });
 
-      after(() => {
+      afterAll(() => {
         timekeeper.reset();
       });
 
-      it("returns seconds since prediction time", () => {
+      test("returns seconds since prediction time", () => {
         const t = trainWithAttributes({prdt: "20141007 14:49:27"});
 
-        assert.equal(90, t.predictionAge());
+        expect(t.predictionAge()).toBe(90);
       });
     });
 
     describe("route", () => {
       describe("sets friendly name for abbreviated routes", () => {
-        it("handles the Brown line", () => {
+        test("handles the Brown line", () => {
           const t = trainWithAttributes({rt: "Brn"});
 
-          assert.equal("Brown", t.route());
+          expect(t.route()).toBe("Brown");
         });
 
-        it("handles the Green line", () => {
+        test("handles the Green line", () => {
           const t = trainWithAttributes({rt: "G"});
 
-          assert.equal("Green", t.route());
+          expect(t.route()).toBe("Green");
         });
 
-        it("handles the Orange line", () => {
+        test("handles the Orange line", () => {
           const t = trainWithAttributes({rt: "Org"});
 
-          assert.equal("Orange", t.route());
+          expect(t.route()).toBe("Orange");
         });
 
-        it("handles the Purple line", () => {
+        test("handles the Purple line", () => {
           const t = trainWithAttributes({rt: "P"});
 
-          assert.equal("Purple", t.route());
+          expect(t.route()).toBe("Purple");
         });
 
-        it("handles the Yellow line", () => {
+        test("handles the Yellow line", () => {
           const t = trainWithAttributes({rt: "Y"});
 
-          assert.equal("Yellow", t.route());
+          expect(t.route()).toBe("Yellow");
         });
       });
 
       describe("passes through unabbreviated routes", () => {
-        it("handles the Red line", () => {
+        test("handles the Red line", () => {
           const t = trainWithAttributes({rt: "Red"});
 
-          assert.equal("Red", t.route());
+          expect(t.route()).toBe("Red");
         });
 
-        it("handles the Blue line", () => {
+        test("handles the Blue line", () => {
           const t = trainWithAttributes({rt: "Blue"});
 
-          assert.equal("Blue", t.route());
+          expect(t.route()).toBe("Blue");
         });
 
-        it("handles the Pink line", () => {
+        test("handles the Pink line", () => {
           const t = trainWithAttributes({rt: "Pink"});
 
-          assert.equal("Pink", t.route());
+          expect(t.route()).toBe("Pink");
         });
       });
     });
 
     describe("routeClass", () => {
-      it("handles the Brown line", () => {
+      test("handles the Brown line", () => {
         const t = trainWithAttributes({rt: "Brn"});
 
-        assert.equal("brown", t.routeClass());
+        expect(t.routeClass()).toBe("brown");
       });
 
-      it("handles the Green line", () => {
+      test("handles the Green line", () => {
         const t = trainWithAttributes({rt: "G"});
 
-        assert.equal("green", t.routeClass());
+        expect(t.routeClass()).toBe("green");
       });
 
-      it("handles the Orange line", () => {
+      test("handles the Orange line", () => {
         const t = trainWithAttributes({rt: "Org"});
 
-        assert.equal("orange", t.routeClass());
+        expect(t.routeClass()).toBe("orange");
       });
 
-      it("handles the Purple line", () => {
+      test("handles the Purple line", () => {
         const t = trainWithAttributes({rt: "P"});
 
-        assert.equal("purple", t.routeClass());
+        expect(t.routeClass()).toBe("purple");
       });
 
-      it("handles the Yellow line", () => {
+      test("handles the Yellow line", () => {
         const t = trainWithAttributes({rt: "Y"});
 
-        assert.equal("yellow", t.routeClass());
+        expect(t.routeClass()).toBe("yellow");
       });
 
-      it("handles the Red line", () => {
+      test("handles the Red line", () => {
         const t = trainWithAttributes({rt: "Red"});
 
-        assert.equal("red", t.routeClass());
+        expect(t.routeClass()).toBe("red");
       });
 
-      it("handles the Blue line", () => {
+      test("handles the Blue line", () => {
         const t = trainWithAttributes({rt: "Blue"});
 
-        assert.equal("blue", t.routeClass());
+        expect(t.routeClass()).toBe("blue");
       });
 
-      it("handles the Pink line", () => {
+      test("handles the Pink line", () => {
         const t = trainWithAttributes({rt: "Pink"});
 
-        assert.equal("pink", t.routeClass());
+        expect(t.routeClass()).toBe("pink");
       });
     });
   });
 
   describe("integer fields", () => {
-    it("converts destination station ID to an integer", () => {
+    test("converts destination station ID to an integer", () => {
       const t = trainWithAttributes({destSt: "30182"});
 
-      assert.equal(30182, t.destinationId());
+      expect(t.destinationId()).toBe(30182);
     });
 
-    it("converts direction ID to an integer", () => {
+    test("converts direction ID to an integer", () => {
       const t = trainWithAttributes({trDr: "5"});
 
-      assert.equal(5, t.directionId());
+      expect(t.directionId()).toBe(5);
     });
 
-    it("converts heading to an integer", () => {
+    test("converts heading to an integer", () => {
       const t = trainWithAttributes({heading: "269"});
 
-      assert.equal(269, t.heading());
+      expect(t.heading()).toBe(269);
     });
 
-    it("converts run number to an integer", () => {
+    test("converts run number to an integer", () => {
       const t = trainWithAttributes({rn: "715"});
 
-      assert.equal(715, t.runNumber());
+      expect(t.runNumber()).toBe(715);
     });
 
-    it("converts station ID to an integer", () => {
+    test("converts station ID to an integer", () => {
       const t = trainWithAttributes({staId: "40160"});
 
-      assert.equal(40160, t.stationId());
+      expect(t.stationId()).toBe(40160);
     });
 
-    it("converts stop ID to an integer", () => {
+    test("converts stop ID to an integer", () => {
       const t = trainWithAttributes({stpId: "30031"});
 
-      assert.equal(30031, t.stopId());
+      expect(t.stopId()).toBe(30031);
     });
   });
 
   describe("string fields", () => {
-    it("maps destination name", () => {
+    test("maps destination name", () => {
       const t = trainWithAttributes({destNm: "Midway"});
 
-      assert.equal("Midway", t.destinationName());
+      expect(t.destinationName()).toBe("Midway");
     });
 
-    it("maps route ID", () => {
+    test("maps route ID", () => {
       const t = trainWithAttributes({rt: "Org"});
 
-      assert.equal("Org", t.routeId());
+      expect(t.routeId()).toBe("Org");
     });
 
-    it("maps station name", () => {
+    test("maps station name", () => {
       const t = trainWithAttributes({staNm: "LaSalle/Van Buren"});
 
-      assert.equal("LaSalle/Van Buren", t.stationName());
+      expect(t.stationName()).toBe("LaSalle/Van Buren");
     });
 
-    it("maps stop description", () => {
+    test("maps stop description", () => {
       const t = trainWithAttributes({stpDe: "Service at Inner Loop platform"});
 
-      assert.equal("Service at Inner Loop platform", t.stopDescription());
+      expect(t.stopDescription()).toBe("Service at Inner Loop platform");
     });
   });
 });

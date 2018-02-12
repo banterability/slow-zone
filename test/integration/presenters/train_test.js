@@ -1,4 +1,3 @@
-const assert = require("assertive");
 const timekeeper = require("timekeeper");
 const {loadJSONMock} = require("../../helpers");
 
@@ -7,130 +6,125 @@ const Train = require("../../../lib/presenters/train");
 const mockTrain = loadJSONMock("train.json");
 
 describe("Train", () => {
-  before(() => {
+  beforeAll(() => {
     timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
   });
 
-  after(() => {
+  afterAll(() => {
     timekeeper.reset();
-  });
-
-  it("exists", () => {
-    assert.truthy(Train);
   });
 
   describe("given a train's attributes", () => {
     let train;
 
-    before(() => {
+    beforeAll(() => {
       train = new Train(mockTrain).toHash();
     });
 
     describe("destination station (headsign)", () => {
-      it("presents the destination station ID", () => {
-        assert.equal(30182, train.destination.id);
+      test("presents the destination station ID", () => {
+        expect(train.destination.id).toBe(30182);
       });
 
-      it("presents the destination station name", () => {
-        assert.equal("Midway", train.destination.name);
+      test("presents the destination station name", () => {
+        expect(train.destination.name).toBe("Midway");
       });
     });
 
     describe("location", () => {
-      it("presents the train's current latitude", () => {
-        assert.equal(41.87685, train.location.latitude);
+      test("presents the train's current latitude", () => {
+        expect(train.location.latitude).toBe(41.87685);
       });
 
-      it("presents the train's current longitude", () => {
-        assert.equal(-87.6327, train.location.longitude);
+      test("presents the train's current longitude", () => {
+        expect(train.location.longitude).toBe(-87.6327);
       });
 
-      it("presents the train's current heading", () => {
-        assert.equal(269, train.location.heading);
+      test("presents the train's current heading", () => {
+        expect(train.location.heading).toBe(269);
       });
     });
 
     describe("prediction", () => {
-      it("presents the number of minutes between the prediction time and the arrival time", () => {
-        assert.equal(1, train.prediction.arrivalMinutes);
+      test("presents the number of minutes between the prediction time and the arrival time", () => {
+        expect(train.prediction.arrivalMinutes).toBe(1);
       });
 
-      it("presents the arrival time as a human-readable string", () => {
-        assert.equal("2:50 p.m.", train.prediction.arrivalString);
+      test("presents the arrival time as a human-readable string", () => {
+        expect(train.prediction.arrivalString).toBe("2:50 p.m.");
       });
 
-      it("presents the arrival time as a native JS date", () => {
+      test("presents the arrival time as a native JS date", () => {
         const expected = new Date(2014, 9, 7, 14, 50, 27).getTime();
 
-        assert.equal(expected, train.prediction.arrivalTime.getTime());
+        expect(train.prediction.arrivalTime.getTime()).toBe(expected);
       });
 
-      it("presents the number of seconds since the predicion was generated", () => {
-        assert.equal(90, train.prediction.predictionAge);
+      test("presents the number of seconds since the predicion was generated", () => {
+        expect(train.prediction.predictionAge).toBe(90);
       });
-      it("presents the original prediction time as a native JS date", () => {
+      test("presents the original prediction time as a native JS date", () => {
         const expected = new Date(2014, 9, 7, 14, 49, 27).getTime();
 
-        assert.equal(expected, train.prediction.predictionTime.getTime());
+        expect(train.prediction.predictionTime.getTime()).toBe(expected);
       });
     });
 
     describe("route (line)", () => {
-      it("presents the route direction ID", () => {
-        assert.equal(5, train.route.directionId);
+      test("presents the route direction ID", () => {
+        expect(train.route.directionId).toBe(5);
       });
 
-      it("presents the route ID", () => {
-        assert.equal("Org", train.route.id);
+      test("presents the route ID", () => {
+        expect(train.route.id).toBe("Org");
       });
 
-      it("presents the human-readable route name", () => {
-        assert.equal("Orange", train.route.name);
+      test("presents the human-readable route name", () => {
+        expect(train.route.name).toBe("Orange");
       });
 
-      it("presents the run number", () => {
-        assert.equal(715, train.route.run);
+      test("presents the run number", () => {
+        expect(train.route.run).toBe(715);
       });
     });
 
     describe("prediction station (this stop)", () => {
-      it("presents the prediction station ID", () => {
-        assert.equal(40160, train.station.id);
+      test("presents the prediction station ID", () => {
+        expect(train.station.id).toBe(40160);
       });
 
-      it("presents the prediction station name", () => {
-        assert.equal("LaSalle/Van Buren", train.station.name);
+      test("presents the prediction station name", () => {
+        expect(train.station.name).toBe("LaSalle/Van Buren");
       });
 
       describe("prediction stop", () => {
-        it("presents the prediction stop ID", () => {
-          assert.equal(30031, train.station.stop.id);
+        test("presents the prediction stop ID", () => {
+          expect(train.station.stop.id).toBe(30031);
         });
 
-        it("presents the prediction stop description", () => {
-          assert.equal(
-            "Service at Inner Loop platform",
-            train.station.stop.description
+        test("presents the prediction stop description", () => {
+          expect(train.station.stop.description).toBe(
+            "Service at Inner Loop platform"
           );
         });
       });
     });
 
     describe("status", () => {
-      it("presents whether the train is approaching", () => {
-        assert.truthy(train.status.approaching);
+      test("presents whether the train is approaching", () => {
+        expect(train.status.approaching).toBe(true);
       });
 
-      it("presents whether the train is delayed", () => {
-        assert.falsey(train.status.delayed);
+      test("presents whether the train is delayed", () => {
+        expect(train.status.delayed).toBe(false);
       });
 
-      it("presents whether the train is faulty", () => {
-        assert.falsey(train.status.faulty);
+      test("presents whether the train is faulty", () => {
+        expect(train.status.faulty).toBe(false);
       });
 
-      it("presents whether the train is scheduled", () => {
-        assert.falsey(train.status.scheduled);
+      test("presents whether the train is scheduled", () => {
+        expect(train.status.scheduled).toBe(false);
       });
     });
   });
