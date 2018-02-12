@@ -1,6 +1,0 @@
-before_install:
-  - export TZ=America/Chicago
-language: node_js
-node_js:
-  - "6.12.3"
-  - "8.9.4"

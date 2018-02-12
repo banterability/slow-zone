@@ -1,6 +1,6 @@
 # slow-zone
 
-[![Build Status](https://travis-ci.org/banterability/slow-zone.svg?branch=master)](https://travis-ci.org/banterability/slow-zone)
+[![CircleCI](https://circleci.com/gh/banterability/slow-zone/tree/master.svg?style=svg)](https://circleci.com/gh/banterability/slow-zone/tree/master)
 
 A client & wrapper for CTA 'L' arrival data.
 
