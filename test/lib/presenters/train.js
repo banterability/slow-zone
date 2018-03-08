@@ -2,7 +2,8 @@ const bond = require("bondjs");
 const Dateline = require("dateline");
 const timekeeper = require("timekeeper");
 
-const Train = require("../train");
+const Train = require("../../../lib/presenters/train");
+const mockTrain = require("../../mocks/mock_train.json");
 
 const trainWithAttributes = attributes => new Train(attributes);
 
@@ -351,7 +352,6 @@ describe("Train", () => {
     });
 
     test("returns all attributes", () => {
-      const mockTrain = require("./mock_train.json");
       const train = new Train(mockTrain).toHash();
 
       expect(train).toMatchSnapshot();
