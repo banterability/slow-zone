@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/node:lts
     environment:
-      TZ: "/usr/share/zoneinfo/America/Chicago"
+      TZ: "America/Chicago"
     steps:
       - checkout
       - restore_cache:
