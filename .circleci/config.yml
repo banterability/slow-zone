@@ -1,40 +1,25 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   build:
+    working_directory: ~/slow-zone
     docker:
-      # specify the version you desire here
-      - image: circleci/node:8.9
-
-      # https://circleci.com/docs/2.0/circleci-images/
-
-    working_directory: ~/repo
-
+      - image: circleci/node:lts
     environment:
       TZ: "/usr/share/zoneinfo/America/Chicago"
-
     steps:
       - checkout
-
       - restore_cache:
           key: npm-cache-{{ checksum "package.json" }}
-
       - run:
           name: install
           command: npm install
-
       - save_cache:
           key: npm-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-
       - run:
           name: test
           command: npm test -- --coverage
-
       - store_artifacts:
           path: coverage
           prefix: coverage
