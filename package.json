@@ -8,8 +8,7 @@
   "dependencies": {
     "dateline": "^2.1.0",
     "request": "^2.88.0",
-    "underscore": "^1.8.3",
-    "xml2js": "^0.4.19"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "bondjs": "^2.0.0",

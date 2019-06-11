@@ -78,7 +78,7 @@ describe("Train", () => {
   describe("date fields", () => {
     describe("arrivalTime", () => {
       test("returns a native Date object", () => {
-        const t = trainWithAttributes({arrT: "20141007 14:50:27"});
+        const t = trainWithAttributes({arrT: "2014-10-07T14:50:27"});
         const expected = new Date(2014, 9, 7, 14, 50, 27);
         const actual = t.arrivalTime();
 
@@ -88,7 +88,7 @@ describe("Train", () => {
 
     describe("predictionTime", () => {
       test("returns a native Date object", () => {
-        const t = trainWithAttributes({prdt: "20141007 14:49:27"});
+        const t = trainWithAttributes({prdt: "2014-10-07T14:49:27"});
         const expected = new Date(2014, 9, 7, 14, 49, 27);
         const actual = t.predictionTime();
 
@@ -167,7 +167,7 @@ describe("Train", () => {
       });
 
       test("returns seconds since prediction time", () => {
-        const t = trainWithAttributes({prdt: "20141007 14:49:27"});
+        const t = trainWithAttributes({prdt: "2014-10-07T14:49:27"});
 
         expect(t.predictionAge()).toBe(90);
       });

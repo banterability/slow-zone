@@ -3,6 +3,11 @@ const nock = require("nock");
 const SlowZone = require("../../lib");
 const {getMock} = require("../mocks");
 
+// Uncomment to update mocks
+// nock.recorder.rec({
+//   output_objects: true
+// });
+
 describe("client", () => {
   test("responds with error when API key is invalid", done => {
     nock.load(getMock("bad-api-key"));
