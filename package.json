@@ -1,6 +1,6 @@
 {
   "name": "slow-zone",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A client & wrapper for CTA 'L' arrival data",
   "main": "lib/index.js",
   "author": "Jeff Long",
