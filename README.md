@@ -15,72 +15,65 @@ $ npm install slow-zone
 Make sure you have a [CTA Train Tracker API Key][1].
 
 ```javascript
-var SlowZone = require("slow-zone");
-sz = new SlowZone({apiKey: "afafafafafafafafafafafafafafafaf"});
+const SlowZone = require("slow-zone");
+
+const client = new SlowZone({apiKey: "afafafafafafafafafafafafafafafaf"});
 ```
 
 ### Arrivals
 
-#### `SlowZone.arrivals.byStation(stationId, options, callback)`
+#### `getArrivalsForStation(stationId, options)`
 
 | Key         | Value                                                                                                             | Required? |
 | ----------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values.                                  |
-| `options`   | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback`  | (Function) Executed after the API request. Recieves two arguments:                                                |
+| `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values.                                  | Yes       |
+| `options`   | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. | No        |
 
-* `err`: An error object if something goes wrong; `null` otherwise.
-* `data`: An array of objects, each describing a predicted train. |
+Returns a Promise that either resolves with an array of objects, each describing a predicted train, or rejects with an error.
 
 ```javascript
 // Logan Square: 41020
-sz.arrivals.byStation(41020, {}, function(err, data) {
-  // …do something
-});
+client.getArrivalsForStation(41020, {})
+  .then(arrivals => /* do something */)
+  .catch(err => /* do something */);
 ```
 
-#### `SlowZone.arrivals.byStop(stopId, options, callback)`
+#### `getArrivalsForStop(stopId, options)`
 
-| Key        | Value                                                                                                             | Required? |
-| ---------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| `stopId`   | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values.                                     |
-| `options`  | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:                                                |
+| Key       | Value                                                                                                             | Required? |
+| --------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
+| `stopId`  | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values.                                     | Yes       |
+| `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. | No        |
 
-* `err`: An error object if something goes wrong; `null` otherwise.
-* `data`: An array of objects, each describing a predicted train. |
+Returns a Promise that either resolves with an array of objects, each describing a predicted train, or rejects with an error.
 
 ```javascript
 // Merchandise Mart, Southbound Platform: 30091
-// Example using options to only return Brown Line trains
-sz.arrivals.byStop(30091, {rt: "Brn"}, function(err, data) {
-  // …do something
-});
+// Example uses options to only return Brown Line trains
+client.getArrivalsForStop(30091, {rt: "Brn"})
+  .then(arrivals => /* do something */)
+  .catch(err => /* do something */);
 ```
 
 ### Follow This Train
 
-#### `SlowZone.follow.train(runId, callback)`
+#### `followTrain(runId)`
 
-| Key        | Value                                                                                  | Required? |
-| ---------- | -------------------------------------------------------------------------------------- | --------- |
-| `runId`    | (Integer) A train run ID. Likely something you got from one of the above API requests. |
-| `callback` | (Function) Executed after the API request. Recieves two arguments:                     |
+| Key     | Value                                                                                  | Required? |
+| ------- | -------------------------------------------------------------------------------------- | --------- |
+| `runId` | (Integer) A train run ID. Likely something you got from one of the above API requests. | Yes       |
 
-* `err`: An error object if something goes wrong; `null` otherwise.
-* `data`: An array of objects, each describing a station stop. |
+Returns a Promise that either resolves with an array of objects, each describing a station stop, or rejects with an error.
 
 ```javascript
-// Merchandise Mart, Southbound Platform: 30091
-// Example using options to only return Brown Line trains
-sz.follow.train(410, function(err, data) {
-  // …do something
-});
+sz.followTrain(410)
+  .then(arrivals => /* do something */)
+  .catch(err => /* do something */);
 ```
 
 ### Response Structure
 
-Slow Zone decorates the response from the CTA API to speed up common tasks. Note that all fields may not be present on all responses:
+Slow Zone reformats and decorates the response from the CTA API to speed up common tasks. Note that all fields may not be present on all responses.
 
 ```json
 {
@@ -159,13 +152,13 @@ The prediction itself, in a number of formats:
 
 Data about the predicted train's route:
 
-| Key                 | Value                                                                                                                                           |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `route.class`       | (String) The name of the route, lowercased for consistency                                                                                      |
-| `route.directionId` | (Integer) The directionality of the run. See the documentation for specifics, but as a general rule: `1` is north & west, `5` is south and east |
-| `route.id`          | (String) The CTA ID for the route                                                                                                               |
-| `route.name`        | (String) The name (color) of the route                                                                                                          |
-| `route.run`         | (Integer) A unique (that day) identifer for the run                                                                                             |
+| Key                 | Value                                                                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route.class`       | (String) The name of the route, lowercased for consistency                                                                                     |
+| `route.directionId` | (Integer) The directionality of the run. See the documentation for specifics, but as a general rule `1` is north & west, `5` is south and east |
+| `route.id`          | (String) The CTA ID for the route                                                                                                              |
+| `route.name`        | (String) The name (color) of the route                                                                                                         |
+| `route.run`         | (Integer) A unique (that day) identifier for the run                                                                                           |
 
 #### Station
 
@@ -180,7 +173,8 @@ Data about the station the prediction is relative to:
 
 #### Status
 
-Flags that may affect the reliablity or contextof a prediction:
+Flags that may affect the reliability or display
+context of a prediction:
 
 | Key                  | Value                                                                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
