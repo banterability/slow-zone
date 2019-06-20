@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Fix compatibility with Node < 10
+
 ## 2.0.0
 
 - New public API, based on Promises
