@@ -1,3 +1,7 @@
+## 2.0.0
+
+- New public API, based on Promises
+
 ## 1.2.0
 
 - Use CTA JSON API
