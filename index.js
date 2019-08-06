@@ -1,9 +1,9 @@
 const fetch = require("node-fetch");
 
-const {buildUrl} = require("./url");
-const Train = require("./presenters/train");
+const {buildUrl} = require("./lib/url");
+const Train = require("./lib/presenters/train");
 
-const VERSION = require("../package.json").version;
+const VERSION = require("./package.json").version;
 const USER_AGENT = `slow-zone/v${VERSION}`;
 
 class SlowZone {
