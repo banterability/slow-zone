@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Update dependencies
+
 ## 2.0.1
 
 - Fix compatibility with Node < 10
