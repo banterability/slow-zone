@@ -5,6 +5,9 @@
   "main": "lib/index.js",
   "author": "Jeff Long",
   "license": "MIT",
+  "engines": {
+    "node": ">=6.8.0"
+  },
   "dependencies": {
     "dateline": "^2.1.0",
     "node-fetch": "^2.6.0"
