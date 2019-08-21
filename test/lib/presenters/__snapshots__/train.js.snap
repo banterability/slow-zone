@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Train toHash returns all attributes 1`] = `
+exports[`Train toJSON returns all attributes 1`] = `
 Object {
   "destination": Object {
     "id": 30182,

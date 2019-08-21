@@ -342,7 +342,7 @@ describe("Train", () => {
     });
   });
 
-  describe("toHash", () => {
+  describe("toJSON", () => {
     beforeAll(() => {
       timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
     });
@@ -352,7 +352,7 @@ describe("Train", () => {
     });
 
     test("returns all attributes", () => {
-      const train = new Train(mockTrain).toHash();
+      const train = new Train(mockTrain).toJSON();
 
       expect(train).toMatchSnapshot();
     });
