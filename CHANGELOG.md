@@ -1,3 +1,7 @@
+## 2.0.4
+
+- Bump dependencies
+
 ## 2.0.3
 
 - Refactor train presenter
