@@ -1,3 +1,7 @@
+## 2.1.2
+
+- Fix case on imports
+
 ## 2.1.1
 
 - Update dependencies
