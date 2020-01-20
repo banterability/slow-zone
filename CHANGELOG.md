@@ -1,3 +1,8 @@
+## 2.1.1
+
+- Update dependencies
+- Refactored presenters
+
 ## 2.1.0
 
 - Always include minutes in generated time strings, even at the top of the hour (ie: '11:00 a.m.' instead of '11 a.m.')
