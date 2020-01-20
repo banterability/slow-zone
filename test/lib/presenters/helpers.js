@@ -1,6 +1,5 @@
 const {
   getNativeBoolean,
-  getNativeDate,
   getNativeFloat,
   getNativeInteger
 } = require("../../../lib/presenters/helpers");
@@ -13,14 +12,6 @@ describe("helpers", () => {
 
     test("converts a string '0' to a native false", () => {
       expect(getNativeBoolean("0")).toBe(false);
-    });
-  });
-
-  describe("getNativeDate", () => {
-    test("converts an date string to a native date", () => {
-      expect(getNativeDate("2014-10-07T19:49:27.000Z")).toBe(
-        new Date(2014, 11, 7, 19, 49, 27)
-      );
     });
   });
 
