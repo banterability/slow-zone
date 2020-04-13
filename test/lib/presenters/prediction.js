@@ -45,8 +45,8 @@ describe("Prediction", () => {
       const p = stubbedPrediction([
         {
           arrivalTime: new Date(2014, 1, 1, 12, 5, 0),
-          predictionTime: new Date(2014, 1, 1, 12, 0, 0)
-        }
+          predictionTime: new Date(2014, 1, 1, 12, 0, 0),
+        },
       ]);
 
       expect(p.arrivalMinutes()).toBe(5);
@@ -56,8 +56,8 @@ describe("Prediction", () => {
       const p = stubbedPrediction([
         {
           arrivalTime: new Date(2014, 1, 1, 12, 1, 29),
-          predictionTime: new Date(2014, 1, 1, 12, 0, 0)
-        }
+          predictionTime: new Date(2014, 1, 1, 12, 0, 0),
+        },
       ]);
 
       expect(p.arrivalMinutes()).toBe(1);
@@ -67,8 +67,8 @@ describe("Prediction", () => {
       const p = stubbedPrediction([
         {
           arrivalTime: new Date(2014, 1, 1, 12, 1, 31),
-          predictionTime: new Date(2014, 1, 1, 12, 0, 0)
-        }
+          predictionTime: new Date(2014, 1, 1, 12, 0, 0),
+        },
       ]);
 
       expect(p.arrivalMinutes()).toBe(2);

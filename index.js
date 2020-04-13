@@ -29,19 +29,19 @@ class SlowZone {
   _fetch(endpoint, queryParams) {
     const defaultQueryParams = {
       key: this.apiKey,
-      outputType: "json"
+      outputType: "json",
     };
 
     return fetch(
       buildUrl(this.baseUrl, endpoint, {
         ...queryParams,
-        ...defaultQueryParams
+        ...defaultQueryParams,
       }),
       {
-        headers: {"User-Agent": USER_AGENT}
+        headers: {"User-Agent": USER_AGENT},
       }
     )
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(this._handleSuccess)
       .catch(this._handleError);
   }
@@ -56,7 +56,7 @@ class SlowZone {
         return reject(new Error(`${body.ctatt.errCd} – ${body.ctatt.errNm}`));
       }
 
-      const results = body.ctatt.eta.map(trainData =>
+      const results = body.ctatt.eta.map((trainData) =>
         new Train(trainData).toJSON()
       );
 
