@@ -1,3 +1,7 @@
+## 2.1.5
+- Exclude tests and config files when distributing package
+- Update dependencies
+
 ## 2.1.4
 
 - Update dependencies
