@@ -1,4 +1,10 @@
+## 2.1.6
+
+- Refactor presenters
+- Update dependencies & formatting
+
 ## 2.1.5
+
 - Exclude tests and config files when distributing package
 - Update dependencies
 
