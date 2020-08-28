@@ -9,7 +9,7 @@
     "node": ">=6.8.0"
   },
   "dependencies": {
-    "dateline": "2.2.2",
+    "dateline": "2.2.3",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
