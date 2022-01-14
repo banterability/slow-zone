@@ -1,39 +1,40 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
-const {buildUrl} = require("./lib/url");
-const Train = require("./lib/presenters/train");
+import { buildUrl } from "./url";
+import {Train} from "./train";
 
-const VERSION = require("./package.json").version;
+const BASE_URL = "http://lapi.transitchicago.com/api/1.0";
+const VERSION = require("../package.json").version;
 const USER_AGENT = `slow-zone/v${VERSION}`;
 
-class SlowZone {
+export class SlowZone {
+  apiKey: string;
+
   constructor(options) {
     this.apiKey = options.apiKey;
-    this.baseUrl = "http://lapi.transitchicago.com/api/1.0";
   }
 
-  // Public API
   getArrivalsForStation(stationId, options = {}) {
-    return this._getArrivals({mapid: stationId, ...options});
+    return this.getArrivals({mapid: stationId, ...options});
   }
 
   getArrivalsForStop(stopId, options = {}) {
-    return this._getArrivals({stpid: stopId, ...options});
+    return this.getArrivals({stpid: stopId, ...options});
   }
 
   followTrain(runId) {
-    return this._fetch("ttfollow.aspx", {runnumber: runId});
+    return this.fetch("ttfollow.aspx", {runnumber: runId});
   }
 
   // Private API
-  _fetch(endpoint, queryParams) {
+  private fetch(endpoint, queryParams) {
     const defaultQueryParams = {
       key: this.apiKey,
       outputType: "json",
     };
 
     return fetch(
-      buildUrl(this.baseUrl, endpoint, {
+      buildUrl(BASE_URL, endpoint, {
         ...queryParams,
         ...defaultQueryParams,
       }),
@@ -42,15 +43,15 @@ class SlowZone {
       }
     )
       .then((res) => res.json())
-      .then(this._handleSuccess)
-      .catch(this._handleError);
+      .then(this.handleSuccess)
+      .catch(this.handleError);
   }
 
-  _getArrivals(options) {
-    return this._fetch("ttarrivals.aspx", options);
+  private getArrivals(options) {
+    return this.fetch("ttarrivals.aspx", options);
   }
 
-  _handleSuccess(body) {
+  private handleSuccess(body) {
     return new Promise((resolve, reject) => {
       if (body.ctatt.errCd != "0") {
         return reject(new Error(`${body.ctatt.errCd} – ${body.ctatt.errNm}`));
@@ -64,7 +65,7 @@ class SlowZone {
     });
   }
 
-  _handleError(err) {
+  private handleError(err) {
     return Promise.reject(err);
   }
 }

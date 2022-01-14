@@ -1,6 +1,8 @@
-const {getNativeFloat, getNativeInteger} = require("./helpers");
+import {getNativeFloat, getNativeInteger} from "./helpers";
 
-class Location {
+export class Location {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -25,5 +27,3 @@ class Location {
     };
   }
 }
-
-module.exports = Location;

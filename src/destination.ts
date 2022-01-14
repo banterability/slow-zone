@@ -1,6 +1,8 @@
-const {getNativeInteger} = require("./helpers");
+import { getNativeInteger } from "./helpers";
 
-class Destination {
+export class Destination {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -16,5 +18,3 @@ class Destination {
     };
   }
 }
-
-module.exports = Destination;

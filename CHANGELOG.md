@@ -1,3 +1,6 @@
+## 3.0.0
+- Migrate to TypeScript
+
 ## 2.1.6
 
 - Refactor presenters

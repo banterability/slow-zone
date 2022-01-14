@@ -2,7 +2,7 @@ const {
   getNativeBoolean,
   getNativeFloat,
   getNativeInteger,
-} = require("../../../lib/presenters/helpers");
+} = require("../lib/helpers");
 
 describe("helpers", () => {
   describe("getNativeBoolean", () => {
