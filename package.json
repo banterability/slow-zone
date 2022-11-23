@@ -40,5 +40,8 @@
     "chicago",
     "l",
     "public transit"
+  ],
+  "files":[
+    "lib/"
   ]
 }

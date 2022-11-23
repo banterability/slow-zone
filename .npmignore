@@ -1,7 +1,0 @@
-.circleci
-test/
-.eslintrc.js
-.nvmrc
-.prettierignore
-.prettierrc
-jest.config.js
