@@ -22,7 +22,7 @@
     "timekeeper": "^2.0.0"
   },
   "scripts": {
-    "prettier": "prettier --write 'lib/**/*.js'",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "test": "jest"
   },
