@@ -1,12 +1,12 @@
 import { request } from "node:https";
 import { Train } from "./parsers/train";
-import { CTAResponse, TrainResponse } from "./types/responses";
+import { CTAResponse } from "./types/responses";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
 const PKG_VERSION = "3.1.0";
 
-export class SlowZone {
+export default class SlowZone {
   apiKey: string;
 
   constructor(options: { apiKey: string }) {
@@ -98,5 +98,3 @@ export class SlowZone {
     });
   }
 }
-
-module.exports = SlowZone;
