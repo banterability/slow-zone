@@ -22,11 +22,11 @@ export class SlowZone {
   }
 
   followTrain(runId: string | number) {
-    return this.makeRequest("ttfollow.aspx", { runnumber: runId });
+    return this.fetch("ttfollow.aspx", { runnumber: runId });
   }
 
   private getArrivals(options = {}) {
-    return this.makeRequest("ttarrivals.aspx", options);
+    return this.fetch("ttarrivals.aspx", options);
   }
 
   private async fetch(endpoint: string, queryParams: {}) {
