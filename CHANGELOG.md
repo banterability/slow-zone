@@ -1,3 +1,7 @@
+## 3.0.1
+
+- Typing & output improvements
+
 ## 3.0.0
 
 - Include types in package
