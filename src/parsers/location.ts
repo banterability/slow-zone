@@ -1,4 +1,5 @@
-import {getNativeFloat, getNativeInteger} from "./helpers";
+import { getNativeFloat, getNativeInteger } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
 export class Location {
   attributes: TrainResponse;
@@ -20,10 +21,14 @@ export class Location {
   }
 
   toJSON() {
-    return {
-      latitude: this.latitude(),
-      longitude: this.longitude(),
-      heading: this.heading(),
-    };
+    if (this.latitude() && this.longitude() && this.heading()) {
+      return {
+        latitude: this.latitude(),
+        longitude: this.longitude(),
+        heading: this.heading(),
+      };
+    } else {
+      return;
+    }
   }
 }

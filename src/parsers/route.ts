@@ -1,4 +1,5 @@
 import { getNativeInteger } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
 const ABBREVIATED_ROUTE_NAMES = {
   Brn: "Brown",
@@ -8,7 +9,7 @@ const ABBREVIATED_ROUTE_NAMES = {
   Y: "Yellow",
 };
 
-export  class Route {
+export class Route {
   attributes: TrainResponse;
 
   constructor(attributes) {

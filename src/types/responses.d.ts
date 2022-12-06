@@ -1,4 +1,18 @@
-type TrainResponse = {
+export type CTAResponse = {
+  ctatt: {
+    tmst: string;
+    errCd: string;
+    errNm: string;
+    position?: {
+      lat: string;
+      lon: string;
+      heading: string;
+    };
+    eta: [TrainResponse];
+  };
+};
+
+export type TrainResponse = {
   staId: string;
   stpId: string;
   staNm: string;
@@ -18,4 +32,4 @@ type TrainResponse = {
   lat: string;
   lon: string;
   heading: string;
-}
+};

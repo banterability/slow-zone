@@ -1,4 +1,5 @@
-import * as Dateline from 'dateline';
+import * as Dateline from "dateline";
+import type { TrainResponse } from "../types/responses";
 
 import { getNativeDate } from "./helpers";
 
@@ -19,16 +20,19 @@ export class Prediction {
 
   arrivalMinutes() {
     return Math.round(
-      (this.arrivalTime().getTime() - this.predictionTime().getTime()) / (60 * 1000)
+      (this.arrivalTime().getTime() - this.predictionTime().getTime()) /
+        (60 * 1000)
     );
   }
 
   arrivalString() {
-    return Dateline(this.arrivalTime()).getAPTime({includeMinutes: true});
+    return Dateline(this.arrivalTime()).getAPTime({ includeMinutes: true });
   }
 
   predictionAge() {
-    return Math.round((new Date().getTime() - this.predictionTime().getTime()) / 1000);
+    return Math.round(
+      (new Date().getTime() - this.predictionTime().getTime()) / 1000
+    );
   }
 
   toJSON() {

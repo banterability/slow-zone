@@ -1,11 +1,12 @@
-import {Destination}  from "./destination";
-import {Location} from "./location";
-import {Prediction} from "./prediction";
-import {Route} from "./route";
-import {Station} from "./station";
-import {Status} from "./status";
+import { Destination } from "./destination";
+import { Location } from "./location";
+import { Prediction } from "./prediction";
+import { Route } from "./route";
+import { Station } from "./station";
+import { Status } from "./status";
+import type { TrainResponse } from "../types/responses";
 
-export  class Train {
+export class Train {
   attributes: TrainResponse;
 
   constructor(attributes) {

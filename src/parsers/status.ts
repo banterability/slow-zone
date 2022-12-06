@@ -1,6 +1,7 @@
 import { getNativeBoolean } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
-export  class Status {
+export class Status {
   attributes: TrainResponse;
 
   constructor(attributes) {

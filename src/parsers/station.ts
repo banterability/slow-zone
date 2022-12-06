@@ -1,4 +1,5 @@
 import { getNativeInteger } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
 export class Station {
   attributes: TrainResponse;

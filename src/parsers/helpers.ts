@@ -1,8 +1,8 @@
-export function getNativeBoolean(booleanString: string) {
+export function getNativeBoolean(booleanString: string): boolean {
   return getNativeInteger(booleanString) === 1;
 }
 
-export function getNativeDate(timeString: string) {
+export function getNativeDate(timeString: string): Date {
   const matches = timeString.match(
     /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/
   );
@@ -16,10 +16,10 @@ export function getNativeDate(timeString: string) {
   return new Date(year, month - 1, day, hour, min, sec);
 }
 
-export function getNativeFloat(floatString: string) {
+export function getNativeFloat(floatString: string): number {
   return parseFloat(floatString);
 }
 
-export function getNativeInteger(integerString: string) {
+export function getNativeInteger(integerString: string): number {
   return parseInt(integerString, 10);
 }
