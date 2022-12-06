@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/slow-zone
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node
     environment:
       TZ: "America/Chicago"
     steps:
