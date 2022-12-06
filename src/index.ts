@@ -42,7 +42,7 @@ export class SlowZone {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "User-Agent": "slow-zone/v3.0.0-beta1",
+        "User-Agent": "slow-zone/v3.0.0",
       },
     };
 
