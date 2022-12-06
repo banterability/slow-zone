@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/slow-zone
     docker:
-      - image: cimg/node
+      - image: cimg/node:lts
     environment:
       TZ: "America/Chicago"
     steps:
