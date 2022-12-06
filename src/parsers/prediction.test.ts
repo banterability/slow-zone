@@ -21,7 +21,7 @@ const MOCK_ATTRIBUTES = {
   heading: "269",
 };
 
-import { parsePrediction } from "./train";
+import { parsePrediction } from "./train.js";
 
 describe("Prediction", () => {
   beforeAll(() => {

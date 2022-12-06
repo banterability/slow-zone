@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import type { TrainResponse } from "../types/responses";
+import type { TrainResponse } from "../types/responses.js";
 
 export function parseTrain(attributes: TrainResponse) {
   return {

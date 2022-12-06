@@ -1,4 +1,4 @@
-import { asBoolean, asFloat, asInteger } from "./train";
+import { asBoolean, asFloat, asInteger } from "./train.js";
 
 describe("helpers", () => {
   describe("asBoolean", () => {

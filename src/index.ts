@@ -1,6 +1,6 @@
 import { request } from "node:https";
-import { parseTrain } from "./parsers/train";
-import { CTAResponse } from "./types/responses";
+import { parseTrain } from "./parsers/train.js";
+import { CTAResponse } from "./types/responses.js";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";

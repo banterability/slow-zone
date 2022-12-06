@@ -1,5 +1,5 @@
 const timekeeper = require("timekeeper");
-import { parseTrain } from "./train";
+import { parseTrain } from "./train.js";
 
 const MOCK_TRAIN_JSON = JSON.stringify({
   staId: "40160",

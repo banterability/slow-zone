@@ -1,4 +1,4 @@
-import { parseRoute } from "./train";
+import { parseRoute } from "./train.js";
 
 const MOCK_ATTRIBUTES = {
   staId: "40160",
