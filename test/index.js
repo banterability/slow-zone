@@ -2,6 +2,6 @@ const SlowZone = require("../dist");
 
 describe("SlowZone", () => {
   test("it exists", () => {
-    expect(SlowZone).toBe();
+    expect(SlowZone);
   });
 });

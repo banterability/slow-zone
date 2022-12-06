@@ -1,4 +1,4 @@
-const { Route } = require("../dist/route");
+const { Route } = require("../dist/parsers/route");
 
 describe("route", () => {
   describe("sets friendly name for abbreviated routes", () => {

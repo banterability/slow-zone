@@ -19,6 +19,7 @@
     "build": "tsc",
     "format": "prettier --write .",
     "prepublish": "tsc",
+    "pretest": "tsc",
     "test": "jest",
     "typecheck": "tsc -b"
   },

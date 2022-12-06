@@ -2,7 +2,7 @@ const {
   getNativeBoolean,
   getNativeFloat,
   getNativeInteger,
-} = require("../dist/helpers");
+} = require("../dist/parsers/helpers");
 
 describe("helpers", () => {
   describe("getNativeBoolean", () => {
