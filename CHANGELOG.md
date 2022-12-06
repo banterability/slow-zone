@@ -1,3 +1,7 @@
+## 3.3.0
+
+- Changes to typescript compilation & tests
+
 ## 3.2.0
 
 - Internal refactor
