@@ -1,3 +1,8 @@
+## 3.1.1
+
+- Requires Node >= 16
+- Specify a default export
+
 ## 3.1.0
 
 - Specify "sideEffects: false" in package.json
