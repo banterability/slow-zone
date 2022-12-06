@@ -1,3 +1,7 @@
+## 3.0.3
+
+- Return processed response
+
 ## 3.0.2
 
 - Fix entry point
