@@ -1,3 +1,7 @@
+## 4.0.0
+
+- ESM-only
+
 ## 3.3.0
 
 - Changes to typescript compilation & tests
