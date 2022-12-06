@@ -23,14 +23,6 @@
     "test": "jest",
     "typecheck": "tsc -b"
   },
-  "jest": {
-    "testMatch": [
-      "<rootDir>/test/**/*.js"
-    ],
-    "testPathIgnorePatterns": [
-      "test/mocks"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/banterability/slow-zone.git"

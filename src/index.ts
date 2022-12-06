@@ -1,34 +1,55 @@
 import { request } from "node:https";
 import { Train } from "./parsers/train";
-import { CTAResponse } from "./types/responses";
+import { CTAResponse, TrainResponse } from "./types/responses";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
+const PKG_VERSION = "3.0.1";
 
 export class SlowZone {
   apiKey: string;
 
-  constructor(options) {
+  constructor(options: { apiKey: string }) {
     this.apiKey = options.apiKey;
   }
 
-  getArrivalsForStation(stationId, options = {}) {
+  getArrivalsForStation(stationId: string | number, options = {}) {
     return this.getArrivals({ ...options, mapid: stationId });
   }
 
-  getArrivalsForStop(stopId, options = {}) {
+  getArrivalsForStop(stopId: string | number, options = {}) {
     return this.getArrivals({ ...options, stpid: stopId });
   }
 
-  followTrain(runId) {
+  followTrain(runId: string | number) {
     return this.makeRequest("ttfollow.aspx", { runnumber: runId });
   }
 
-  private getArrivals(options) {
+  private getArrivals(options = {}) {
     return this.makeRequest("ttarrivals.aspx", options);
   }
 
-  private async makeRequest(endpoint: string, queryParams = {}) {
+  private async fetch(endpoint: string, queryParams: {}) {
+    this.makeRequest(endpoint, queryParams).then((resp) => {
+      return new Promise((resolve, reject) => {
+        if (!resp) {
+          reject(new Error("invalid response"));
+        }
+        if (resp.ctatt.errCd != "0") {
+          return reject(new Error(`[${resp.ctatt.errCd}] ${resp.ctatt.errNm}`));
+        }
+
+        resolve(
+          resp.ctatt.eta.map((trainData) => new Train(trainData).toJSON())
+        );
+      });
+    });
+  }
+
+  private async makeRequest(
+    endpoint: string,
+    queryParams = {}
+  ): Promise<CTAResponse> {
     const query = new URLSearchParams({
       ...queryParams,
       key: this.apiKey,
@@ -42,17 +63,17 @@ export class SlowZone {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "User-Agent": "slow-zone/v3.0.0",
+        "User-Agent": `slow-zone/${PKG_VERSION}`,
       },
     };
 
     return new Promise(function (resolve, reject) {
       const req = request(options, (res) => {
-        if (res.statusCode < 200 || res.statusCode >= 300) {
+        if (res.statusCode && (res.statusCode < 200 || res.statusCode >= 300)) {
           return reject(new Error(res.statusCode.toString()));
         }
 
-        let body = [],
+        let body: any[] = [],
           json;
 
         res.on("data", (chunk) => {
@@ -74,16 +95,6 @@ export class SlowZone {
       });
 
       req.end();
-    }).then((body: CTAResponse) => {
-      return new Promise((resolve, reject) => {
-        if (body.ctatt.errCd != "0") {
-          return reject(new Error(`[${body.ctatt.errCd}] ${body.ctatt.errNm}`));
-        }
-
-        resolve(
-          body.ctatt.eta.map((trainData) => new Train(trainData).toJSON())
-        );
-      });
     });
   }
 }

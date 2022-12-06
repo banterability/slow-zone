@@ -1,12 +1,11 @@
-import * as Dateline from "dateline";
-import type { TrainResponse } from "../types/responses";
-
+import Dateline from "dateline";
 import { getNativeDate } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
 export class Prediction {
   attributes: TrainResponse;
 
-  constructor(attributes) {
+  constructor(attributes: TrainResponse) {
     this.attributes = attributes;
   }
 

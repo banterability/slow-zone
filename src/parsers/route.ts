@@ -12,12 +12,16 @@ const ABBREVIATED_ROUTE_NAMES = {
 export class Route {
   attributes: TrainResponse;
 
-  constructor(attributes) {
+  constructor(attributes: TrainResponse) {
     this.attributes = attributes;
   }
 
   route() {
-    return ABBREVIATED_ROUTE_NAMES[this.attributes.rt] || this.attributes.rt;
+    return (
+      ABBREVIATED_ROUTE_NAMES[
+        this.attributes.rt as keyof typeof ABBREVIATED_ROUTE_NAMES
+      ] || this.attributes.rt
+    );
   }
 
   directionId() {

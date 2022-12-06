@@ -4,7 +4,7 @@ import type { TrainResponse } from "../types/responses";
 export class Destination {
   attributes: TrainResponse;
 
-  constructor(attributes) {
+  constructor(attributes: TrainResponse) {
     this.attributes = attributes;
   }
 

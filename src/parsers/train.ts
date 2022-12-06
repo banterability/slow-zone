@@ -9,7 +9,7 @@ import type { TrainResponse } from "../types/responses";
 export class Train {
   attributes: TrainResponse;
 
-  constructor(attributes) {
+  constructor(attributes: TrainResponse) {
     this.attributes = attributes;
   }
 
