@@ -2,7 +2,7 @@
   "name": "slow-zone",
   "version": "3.0.1",
   "description": "A client & wrapper for CTA 'L' arrival data",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "author": "Jeff Long",
   "license": "MIT",
   "types": "dist/index.d.ts",
