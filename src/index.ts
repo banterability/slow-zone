@@ -13,11 +13,11 @@ export class SlowZone {
   }
 
   getArrivalsForStation(stationId, options = {}) {
-    return this.getArrivals({ mapid: stationId, ...options });
+    return this.getArrivals({ ...options, mapid: stationId });
   }
 
   getArrivalsForStop(stopId, options = {}) {
-    return this.getArrivals({ stpid: stopId, ...options });
+    return this.getArrivals({ ...options, stpid: stopId });
   }
 
   followTrain(runId) {
@@ -28,7 +28,7 @@ export class SlowZone {
     return this.makeRequest("ttarrivals.aspx", options);
   }
 
-  private async makeRequest(endpoint: string, queryParams = {}, data?) {
+  private async makeRequest(endpoint: string, queryParams = {}) {
     const query = new URLSearchParams({
       ...queryParams,
       key: this.apiKey,
@@ -72,10 +72,6 @@ export class SlowZone {
       req.on("error", (err) => {
         reject(err);
       });
-
-      if (data) {
-        req.write(data);
-      }
 
       req.end();
     }).then((body: CTAResponse) => {
