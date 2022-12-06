@@ -1,3 +1,7 @@
+## 3.0.4
+
+- Add missing returns
+
 ## 3.0.3
 
 - Return processed response
