@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/banterability/slow-zone"
+    "url": "git+https://github.com/banterability/slow-zone.git"
   },
   "bugs": {
     "url": "https://github.com/banterability/slow-zone/issues"
@@ -48,5 +48,8 @@
   ],
   "files": [
     "dist/"
-  ]
+  ],
+  "directories": {
+    "test": "test"
+  }
 }
