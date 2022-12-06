@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Specify "sideEffects: false" in package.json
+
 ## 3.0.4
 
 - Add missing returns
