@@ -25,8 +25,8 @@ const client = new SlowZone({ apiKey: "afafafafafafafafafafafafafafafaf" });
 #### `getArrivalsForStation(stationId, options?)`
 
 | Key         | Value                                                                                                                   |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------- | --- |
-| `stationId` | A CTA station ID. See the [CTA API Documentation][2] for valid values.                                                  | Yes |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `stationId` | A CTA station ID. See the [CTA API Documentation][2] for valid values.                                                  |
 | `options`   | (Optional) Additional key/value pairs to pass through to the API. See the [CTA API documentation][2] for valid options. |
 
 Returns a Promise that either resolves with an array of objects, each describing a predicted train, or rejects with an error.

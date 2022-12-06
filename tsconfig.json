@@ -2,15 +2,15 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2021",
-    
+
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 
     "declaration": true,
-    
-    "outDir": "dist",
+
+    "outDir": "dist"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*"]
 }
