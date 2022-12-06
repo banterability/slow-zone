@@ -6,6 +6,7 @@
   "author": "Jeff Long",
   "license": "MIT",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "dependencies": {
     "dateline": "2.2.4"
   },
