@@ -1,4 +1,4 @@
-const { Route } = require("../lib/route");
+const { Route } = require("../dist/route");
 
 describe("route", () => {
   describe("sets friendly name for abbreviated routes", () => {

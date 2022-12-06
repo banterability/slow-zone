@@ -1,7 +1,7 @@
 const Dateline = require("dateline");
 const timekeeper = require("timekeeper");
 
-const { Prediction } = require("../lib/prediction");
+const { Prediction } = require("../dist/prediction");
 
 const stubbedPrediction = ([stubbedMethods]) => {
   const p = new Prediction();

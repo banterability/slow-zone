@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "author": "Jeff Long",
   "license": "MIT",
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "node": "^12.20.0 || >=14.13.1",
   "dependencies": {
     "dateline": "2.2.4",
@@ -20,11 +20,10 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write .",
-    "test": "jest"
+    "prepublish": "tsc",
+    "test": "jest",
+    "typecheck": "tsc -b"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "jest": {
     "testMatch": [
       "<rootDir>/test/**/*.js"
@@ -49,6 +48,6 @@
     "public transit"
   ],
   "files":[
-    "lib/"
+    "dist/"
   ]
 }

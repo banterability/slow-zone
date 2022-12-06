@@ -1,4 +1,4 @@
-const SlowZone = require("../lib");
+const SlowZone = require("../dist");
 
 describe("SlowZone", () => {
   test("it exists", () => {

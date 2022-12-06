@@ -1,6 +1,6 @@
 const timekeeper = require("timekeeper");
 
-const { Train } = require("../lib/train");
+const { Train } = require("../dist/train");
 const mockTrain = require("./mocks/mock_train.json");
 
 describe("Train", () => {
