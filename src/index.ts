@@ -1,10 +1,10 @@
 import { request } from "node:https";
-import { Train } from "./parsers/train";
+import { parseTrain } from "./parsers/train";
 import { CTAResponse } from "./types/responses";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
-const PKG_VERSION = "3.1.1";
+const PKG_VERSION = "3.2.0";
 
 export default class SlowZone {
   apiKey: string;
@@ -39,9 +39,7 @@ export default class SlowZone {
           return reject(new Error(`[${resp.ctatt.errCd}] ${resp.ctatt.errNm}`));
         }
 
-        resolve(
-          resp.ctatt.eta.map((trainData) => new Train(trainData).toJSON())
-        );
+        resolve(resp.ctatt.eta.map((trainData) => parseTrain(trainData)));
       });
     });
   }

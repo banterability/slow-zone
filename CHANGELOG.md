@@ -1,3 +1,7 @@
+## 3.2.0
+
+- Internal refactor
+
 ## 3.1.1
 
 - Requires Node >= 16

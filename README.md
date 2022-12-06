@@ -1,6 +1,6 @@
 # slow-zone
 
-[![Build status](https://img.shields.io/circleci/project/github/banterability/slow-zone/main.svg)](https://circleci.com/gh/banterability/slow-zone/tree/main) [![Latest published version](https://img.shields.io/npm/v/slow-zone.svg)](https://www.npmjs.com/package/slow-zone)
+[![Build status](https://img.shields.io/circleci/project/github/banterability/slow-zone/main.svg)](https://circleci.com/gh/banterability/slow-zone/tree/main) [![Latest published version](https://img.shields.io/npm/v/slow-zone.svg)](https://www.npmjs.com/package/slow-zone) [![install size](https://packagephobia.com/badge?p=slow-zone)](https://packagephobia.com/result?p=slow-zone)
 
 A client & wrapper for CTA 'L' arrival data.
 
