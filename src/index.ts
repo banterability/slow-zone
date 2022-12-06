@@ -30,7 +30,7 @@ export class SlowZone {
   }
 
   private async fetch(endpoint: string, queryParams: {}) {
-    this.makeRequest(endpoint, queryParams).then((resp) => {
+    return this.makeRequest(endpoint, queryParams).then((resp) => {
       return new Promise((resolve, reject) => {
         if (!resp) {
           reject(new Error("invalid response"));
@@ -91,7 +91,7 @@ export class SlowZone {
       });
 
       req.on("error", (err) => {
-        reject(err);
+        return reject(err);
       });
 
       req.end();
