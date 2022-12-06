@@ -1,4 +1,5 @@
-const {getNativeInteger} = require("./helpers");
+import { getNativeInteger } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
 const ABBREVIATED_ROUTE_NAMES = {
   Brn: "Brown",
@@ -8,7 +9,9 @@ const ABBREVIATED_ROUTE_NAMES = {
   Y: "Yellow",
 };
 
-class Route {
+export class Route {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -39,5 +42,3 @@ class Route {
     };
   }
 }
-
-module.exports = Route;

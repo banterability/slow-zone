@@ -1,8 +1,11 @@
-const Dateline = require("dateline");
+import * as Dateline from "dateline";
+import type { TrainResponse } from "../types/responses";
 
-const {getNativeDate} = require("./helpers");
+import { getNativeDate } from "./helpers";
 
-class Prediction {
+export class Prediction {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -17,16 +20,19 @@ class Prediction {
 
   arrivalMinutes() {
     return Math.round(
-      (this.arrivalTime() - this.predictionTime()) / (60 * 1000)
+      (this.arrivalTime().getTime() - this.predictionTime().getTime()) /
+        (60 * 1000)
     );
   }
 
   arrivalString() {
-    return Dateline(this.arrivalTime()).getAPTime({includeMinutes: true});
+    return Dateline(this.arrivalTime()).getAPTime({ includeMinutes: true });
   }
 
   predictionAge() {
-    return Math.round((new Date() - this.predictionTime()) / 1000);
+    return Math.round(
+      (new Date().getTime() - this.predictionTime().getTime()) / 1000
+    );
   }
 
   toJSON() {
@@ -39,5 +45,3 @@ class Prediction {
     };
   }
 }
-
-module.exports = Prediction;

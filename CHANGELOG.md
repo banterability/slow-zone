@@ -1,3 +1,10 @@
+## 3.0.0
+
+- Include types in package
+- Use HTTPS for communication with the API
+- Update documentation & links
+- Removed node-fetch dependency
+
 ## 2.1.6
 
 - Refactor presenters

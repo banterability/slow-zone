@@ -1,12 +1,15 @@
-const Destination = require("./destination");
-const Location = require("./location");
-const Prediction = require("./prediction");
-const Route = require("./route");
-const Station = require("./station");
-const Status = require("./status");
+import { Destination } from "./destination";
+import { Location } from "./location";
+import { Prediction } from "./prediction";
+import { Route } from "./route";
+import { Station } from "./station";
+import { Status } from "./status";
+import type { TrainResponse } from "../types/responses";
 
-class Train {
-  constructor(attributes = {}) {
+export class Train {
+  attributes: TrainResponse;
+
+  constructor(attributes) {
     this.attributes = attributes;
   }
 
@@ -21,5 +24,3 @@ class Train {
     };
   }
 }
-
-module.exports = Train;

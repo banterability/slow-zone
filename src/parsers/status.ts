@@ -1,6 +1,9 @@
-const {getNativeBoolean} = require("./helpers");
+import { getNativeBoolean } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
-class Status {
+export class Status {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -30,5 +33,3 @@ class Status {
     };
   }
 }
-
-module.exports = Status;

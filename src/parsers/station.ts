@@ -1,6 +1,9 @@
-const {getNativeInteger} = require("./helpers");
+import { getNativeInteger } from "./helpers";
+import type { TrainResponse } from "../types/responses";
 
-class Station {
+export class Station {
+  attributes: TrainResponse;
+
   constructor(attributes) {
     this.attributes = attributes;
   }
@@ -24,5 +27,3 @@ class Station {
     };
   }
 }
-
-module.exports = Station;

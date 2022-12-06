@@ -17,38 +17,38 @@ Make sure you have a [CTA Train Tracker API Key][1].
 ```javascript
 const SlowZone = require("slow-zone");
 
-const client = new SlowZone({apiKey: "afafafafafafafafafafafafafafafaf"});
+const client = new SlowZone({ apiKey: "afafafafafafafafafafafafafafafaf" });
 ```
 
 ### Arrivals
 
-#### `getArrivalsForStation(stationId, options)`
+#### `getArrivalsForStation(stationId, options?)`
 
-| Key         | Value                                                                                                             | Required? |
-| ----------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| `stationId` | (Integer) A CTA station ID. See the [CTA API Documentation][2] for valid values.                                  | Yes       |
-| `options`   | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. | No        |
+| Key         | Value                                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- | --- |
+| `stationId` | A CTA station ID. See the [CTA API Documentation][2] for valid values.                                                  | Yes |
+| `options`   | (Optional) Additional key/value pairs to pass through to the API. See the [CTA API documentation][2] for valid options. |
 
 Returns a Promise that either resolves with an array of objects, each describing a predicted train, or rejects with an error.
 
 ```javascript
-// Logan Square: 41020
-client.getArrivalsForStation(41020, {})
+// Station: Logan Square
+client.getArrivalsForStation(41020)
   .then(arrivals => /* do something */)
   .catch(err => /* do something */);
 ```
 
-#### `getArrivalsForStop(stopId, options)`
+#### `getArrivalsForStop(stopId, options?)`
 
-| Key       | Value                                                                                                             | Required? |
-| --------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| `stopId`  | (Integer) A CTA stop ID. See the [CTA API Documentation][2] for valid values.                                     | Yes       |
-| `options` | (Object) Additional key/value pairs to pass through to API. See the [CTA API documentation][2] for valid options. | No        |
+| Key       | Value                                                                                                                   |
+| --------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `stopId`  | A CTA stop ID. See the [CTA API Documentation][2] for valid values.                                                     |
+| `options` | (Optional) Additional key/value pairs to pass through to the API. See the [CTA API documentation][2] for valid options. |
 
 Returns a Promise that either resolves with an array of objects, each describing a predicted train, or rejects with an error.
 
 ```javascript
-// Merchandise Mart, Southbound Platform: 30091
+// Stop: Merchandise Mart (Southbound Platform)
 // Example uses options to only return Brown Line trains
 client.getArrivalsForStop(30091, {rt: "Brn"})
   .then(arrivals => /* do something */)
@@ -59,9 +59,9 @@ client.getArrivalsForStop(30091, {rt: "Brn"})
 
 #### `followTrain(runId)`
 
-| Key     | Value                                                                                  | Required? |
-| ------- | -------------------------------------------------------------------------------------- | --------- |
-| `runId` | (Integer) A train run ID. Likely something you got from one of the above API requests. | Yes       |
+| Key     | Value                                                                        |
+| ------- | ---------------------------------------------------------------------------- |
+| `runId` | A train run ID. Likely something you got from one of the above API requests. |
 
 Returns a Promise that either resolves with an array of objects, each describing a station stop, or rejects with an error.
 
@@ -190,5 +190,5 @@ context of a prediction:
 | `npm install` | Install dependencies |
 | `npm test`    | Run tests            |
 
-[1]: http://www.transitchicago.com/developers/traintrackerapply.aspx
-[2]: http://www.transitchicago.com/assets/1/developer_center/cta_Train_Tracker_API_documentation_v1_42.pdf
+[1]: https://www.transitchicago.com/developers/traintrackerapply/
+[2]: https://www.transitchicago.com/developers/ttdocs/

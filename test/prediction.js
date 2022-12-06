@@ -1,6 +1,7 @@
 const Dateline = require("dateline");
 const timekeeper = require("timekeeper");
-const Prediction = require("../../../lib/presenters/prediction");
+
+const { Prediction } = require("../dist/parsers/prediction");
 
 const stubbedPrediction = ([stubbedMethods]) => {
   const p = new Prediction();
@@ -22,7 +23,7 @@ describe("Prediction", () => {
 
   describe("arrivalTime", () => {
     test("returns a native Date object", () => {
-      const prediction = new Prediction({arrT: "2014-10-07T14:50:27"});
+      const prediction = new Prediction({ arrT: "2014-10-07T14:50:27" });
       const expected = new Date(2014, 9, 7, 14, 50, 27);
       const actual = prediction.arrivalTime();
 
@@ -32,7 +33,7 @@ describe("Prediction", () => {
 
   describe("predictionTime", () => {
     test("returns a native Date object", () => {
-      const prediction = new Prediction({prdt: "2014-10-07T14:49:27"});
+      const prediction = new Prediction({ prdt: "2014-10-07T14:49:27" });
       const expected = new Date(2014, 9, 7, 14, 49, 27);
       const actual = prediction.predictionTime();
 
@@ -78,7 +79,7 @@ describe("Prediction", () => {
   describe("arrivalString", () => {
     test("calls Dateline for formatting", () => {
       const testTime = new Date();
-      const p = stubbedPrediction([{arrivalTime: testTime}]);
+      const p = stubbedPrediction([{ arrivalTime: testTime }]);
       const expected = Dateline(testTime).getAPTime();
 
       expect(p.arrivalString()).toBe(expected);
@@ -87,7 +88,7 @@ describe("Prediction", () => {
 
   describe("predictionAge", () => {
     test("returns seconds since prediction time", () => {
-      const p = new Prediction({prdt: "2014-10-07T14:49:27"});
+      const p = new Prediction({ prdt: "2014-10-07T14:49:27" });
 
       expect(p.predictionAge()).toBe(90);
     });
