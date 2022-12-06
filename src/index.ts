@@ -4,7 +4,7 @@ import { CTAResponse, TrainResponse } from "./types/responses";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
-const PKG_VERSION = "3.0.1";
+const PKG_VERSION = "3.0.2";
 
 export class SlowZone {
   apiKey: string;

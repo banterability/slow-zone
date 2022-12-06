@@ -1,3 +1,7 @@
+## 3.0.2
+
+- Fix entry point
+
 ## 3.0.1
 
 - Typing & output improvements
