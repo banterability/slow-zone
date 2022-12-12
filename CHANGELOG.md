@@ -1,3 +1,7 @@
+## 4.0.1
+
+- Include types in package
+
 ## 4.0.0
 
 - ESM-only
