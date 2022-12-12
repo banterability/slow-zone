@@ -46,6 +46,7 @@
   ],
   "files": [
     "dist/**/*.js",
+    "dist/**/*.d.ts",
     "!dist/**/*.test.js"
   ],
   "directories": {
