@@ -1,7 +1,3 @@
-type TrainDirection = "1" | "5";
-
-type RouteId = "Red" | "Blue" | "Brn" | "G" | "Org" | "P" | "Pink" | "Y";
-
 export type CTAResponse = {
   ctatt: {
     tmst: string;
@@ -22,10 +18,10 @@ export type TrainResponse = {
   staNm: string;
   stpDe: string;
   rn: string;
-  rt: RouteId;
+  rt: string;
   destSt: string;
   destNm: string;
-  trDr: TrainDirection;
+  trDr: string;
   prdt: string;
   arrT: string;
   isApp: string;
