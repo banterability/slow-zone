@@ -1,3 +1,9 @@
+type RouteId = "Red" | "Blue" | "Brn" | "G" | "Org" | "P" | "Pink" | "Y";
+
+type TrainDirection = "1" | "5";
+
+type BooleanNumber = "0" | "1";
+
 export type APIResponse = {
   ctatt: {
     tmst: string;
@@ -18,18 +24,18 @@ export type TrainResponse = {
   staNm: string;
   stpDe: string;
   rn: string;
-  rt: string;
+  rt: RouteId;
   destSt: string;
   destNm: string;
-  trDr: string;
+  trDr: TrainDirection;
   prdt: string;
   arrT: string;
-  isApp: string;
-  isSch: string;
-  isDly: string;
-  isFlt: string;
+  isApp: BooleanNumber;
+  isSch: BooleanNumber;
+  isDly: BooleanNumber;
+  isFlt: BooleanNumber;
   flags: string;
-  lat: string;
-  lon: string;
-  heading: string;
+  lat?: string;
+  lon?: string;
+  heading?: string;
 };
