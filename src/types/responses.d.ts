@@ -1,4 +1,4 @@
-export type CTAResponse = {
+export type APIResponse = {
   ctatt: {
     tmst: string;
     errCd: string;
@@ -8,7 +8,7 @@ export type CTAResponse = {
       lon: string;
       heading: string;
     };
-    eta: [TrainResponse];
+    eta: TrainResponse[];
   };
 };
 

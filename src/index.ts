@@ -1,6 +1,6 @@
 import { request } from "node:https";
 import { parseTrain } from "./parsers/train.js";
-import { CTAResponse } from "./types/responses.js";
+import { APIResponse } from "./types/responses.js";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
@@ -47,7 +47,7 @@ export default class SlowZone {
   private async makeRequest(
     endpoint: string,
     queryParams = {}
-  ): Promise<CTAResponse> {
+  ): Promise<APIResponse> {
     const query = new URLSearchParams({
       ...queryParams,
       key: this.apiKey,
