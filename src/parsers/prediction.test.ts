@@ -1,27 +1,33 @@
 const timekeeper = require("timekeeper");
+
+import { parsePrediction } from "./train.js";
+import type {
+  BooleanNumber,
+  RouteId,
+  TrainDirection,
+} from "../types/responses.js";
+
 const MOCK_ATTRIBUTES = {
   staId: "40160",
   stpId: "30031",
   staNm: "LaSalle/Van Buren",
   stpDe: "Service at Inner Loop platform",
   rn: "715",
-  rt: "Org",
+  rt: "Org" as RouteId,
   destSt: "30182",
   destNm: "Midway",
-  trDr: "5",
+  trDr: "5" as TrainDirection,
   prdt: "2014-10-07T14:49:27",
   arrT: "2014-10-07T14:50:27",
-  isApp: "1",
-  isSch: "0",
-  isDly: "0",
-  isFlt: "0",
+  isApp: "1" as BooleanNumber,
+  isSch: "0" as BooleanNumber,
+  isDly: "0" as BooleanNumber,
+  isFlt: "0" as BooleanNumber,
   flags: "",
   lat: "41.87685",
   lon: "-87.6327",
   heading: "269",
 };
-
-import { parsePrediction } from "./train.js";
 
 describe("Prediction", () => {
   beforeAll(() => {
