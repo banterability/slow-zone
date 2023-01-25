@@ -14,7 +14,7 @@
   "devDependencies": {
     "@types/jest": "^29.2.4",
     "@types/luxon": "^3.1.0",
-    "jest": "29.3.1",
+    "jest": "29.4.0",
     "prettier": "2.8.3",
     "timekeeper": "^2.0.0",
     "ts-jest": "^29.0.3",
