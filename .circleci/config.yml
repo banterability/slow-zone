@@ -1,9 +1,11 @@
 version: 2.1
+orbs:
+  node: circleci/node@5.1.0
 jobs:
   build:
     working_directory: ~/slow-zone
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:18.13
     environment:
       TZ: "America/Chicago"
     steps:
