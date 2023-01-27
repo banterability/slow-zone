@@ -1,3 +1,8 @@
+## 4.1.0
+
+- Improved types
+- Updated dependencies
+
 ## 4.0.1
 
 - Include types in package
