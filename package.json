@@ -9,7 +9,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "dependencies": {
-    "luxon": "3.2.1"
+    "luxon": "3.3.0"
   },
   "devDependencies": {
     "@types/jest": "29.4.0",
