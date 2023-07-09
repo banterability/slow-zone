@@ -46,7 +46,7 @@ describe("Prediction", () => {
       });
 
       expect(prediction.arrivalTime).toStrictEqual(
-        new Date(2014, 9, 7, 14, 50, 27)
+        new Date(2014, 9, 7, 14, 50, 27),
       );
     });
   });
@@ -59,7 +59,7 @@ describe("Prediction", () => {
       });
 
       expect(prediction.predictionTime).toStrictEqual(
-        new Date(2014, 9, 7, 14, 49, 27)
+        new Date(2014, 9, 7, 14, 49, 27),
       );
     });
   });

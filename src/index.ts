@@ -46,7 +46,7 @@ export default class SlowZone {
 
   private async makeRequest(
     endpoint: string,
-    queryParams = {}
+    queryParams = {},
   ): Promise<APIResponse> {
     const query = new URLSearchParams({
       ...queryParams,

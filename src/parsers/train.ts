@@ -97,7 +97,7 @@ export function asBoolean(booleanString: string): boolean {
 
 export function asDate(timeString: string): Date {
   const matches = timeString.match(
-    /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/
+    /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/,
   );
 
   if (!matches) throw new Error("Not a date string");
