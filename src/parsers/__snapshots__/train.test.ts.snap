@@ -13,7 +13,7 @@ exports[`Train > toJSON > returns all attributes 1`] = `
   },
   "prediction": {
     "arrivalMinutes": 1,
-    "arrivalString": "2:50 PM",
+    "arrivalString": "2:50 PM",
     "arrivalTime": 2014-10-07T19:50:27.000Z,
     "predictionAge": 60,
     "predictionTime": 2014-10-07T19:49:27.000Z,

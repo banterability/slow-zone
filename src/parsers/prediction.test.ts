@@ -104,7 +104,7 @@ describe("Prediction", () => {
         ...MOCK_ATTRIBUTES,
         arrT: "2022-12-06T16:36:05",
       });
-      expect(prediction.arrivalString).toBe("4:36 PM");
+      expect(prediction.arrivalString).toBe("4:36 PM");
     });
   });
 
