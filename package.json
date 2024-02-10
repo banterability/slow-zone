@@ -1,6 +1,6 @@
 {
   "name": "slow-zone",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "A client & wrapper for CTA 'L' arrival data",
   "author": "Jeff Long",
   "license": "MIT",

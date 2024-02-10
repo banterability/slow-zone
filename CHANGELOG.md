@@ -1,3 +1,8 @@
+## 4.2.0
+
+- Updated types & dependencies
+- Requires Node >= 18
+
 ## 4.1.0
 
 - Improved types

@@ -5,7 +5,7 @@ import { APIResponse } from "./types/responses.js";
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
-const PKG_VERSION = "3.2.0";
+const PKG_VERSION = "4.2.0";
 
 export default class SlowZone {
   apiKey: string;
