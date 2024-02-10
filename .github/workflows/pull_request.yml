@@ -74,6 +74,8 @@ jobs:
   vitest:
     name: 🧪 Vitest
     runs-on: ubuntu-latest
+    env:
+      TZ: America/Chicago
 
     steps:
       - name: Check out Git repository

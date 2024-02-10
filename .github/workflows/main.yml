@@ -12,6 +12,8 @@ jobs:
   lint:
     name: 🚦 Checks
     runs-on: ubuntu-latest
+    env:
+      TZ: "America/Chicago"
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
