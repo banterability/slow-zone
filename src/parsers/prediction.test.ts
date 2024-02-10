@@ -1,11 +1,15 @@
-const timekeeper = require("timekeeper");
+import { describe, beforeAll, afterAll, test, expect } from "vitest";
+
 
 import { parsePrediction } from "./train.js";
+
 import type {
   BooleanNumber,
   RouteId,
   TrainDirection,
 } from "../types/responses.js";
+
+const timekeeper = require("timekeeper");
 
 const MOCK_ATTRIBUTES = {
   staId: "40160",

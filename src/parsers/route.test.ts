@@ -1,4 +1,7 @@
+import { describe, test, expect } from "vitest";
+
 import { parseRoute } from "./train.js";
+
 import type {
   BooleanNumber,
   RouteId,

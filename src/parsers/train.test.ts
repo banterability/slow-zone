@@ -1,5 +1,8 @@
-const timekeeper = require("timekeeper");
+import { describe, beforeAll, afterAll, test, expect } from "vitest";
+
 import { parseTrain } from "./train.js";
+
+const timekeeper = require("timekeeper");
 
 const MOCK_TRAIN_JSON = JSON.stringify({
   staId: "40160",

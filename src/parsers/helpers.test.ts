@@ -1,3 +1,5 @@
+import { describe, test, expect } from "vitest";
+
 import { asBoolean, asFloat, asInteger } from "./train.js";
 
 describe("helpers", () => {
