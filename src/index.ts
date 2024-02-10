@@ -31,18 +31,15 @@ export default class SlowZone {
   }
 
   private async fetch(endpoint: string, queryParams = {}) {
-    return this.makeRequest(endpoint, queryParams).then((resp) => {
-      return new Promise((resolve, reject) => {
-        if (!resp) {
-          reject(new Error("invalid response"));
-        }
-        if (resp.ctatt.errCd != "0") {
-          return reject(new Error(`[${resp.ctatt.errCd}] ${resp.ctatt.errNm}`));
-        }
+    const res = await this.makeRequest(endpoint, queryParams);
+    if (!res) {
+      throw new Error("invalid response");
+    }
+    if (res.ctatt.errCd != "0") {
+      throw new Error(`[${res.ctatt.errCd}] ${res.ctatt.errNm}`);
+    }
 
-        resolve(resp.ctatt.eta.map((trainData) => parseTrain(trainData)));
-      });
-    });
+    return res.ctatt.eta.map((trainData) => parseTrain(trainData));
   }
 
   private async makeRequest(
