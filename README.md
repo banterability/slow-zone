@@ -15,7 +15,7 @@ $ npm install slow-zone
 Make sure you have a [CTA Train Tracker API Key][1].
 
 ```javascript
-const SlowZone = require("slow-zone");
+import SlowZone from "slow-zone";
 
 const client = new SlowZone({ apiKey: "afafafafafafafafafafafafafafafaf" });
 ```

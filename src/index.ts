@@ -30,7 +30,7 @@ export default class SlowZone {
     return this.fetch("ttarrivals.aspx", options);
   }
 
-  private async fetch(endpoint: string, queryParams: {}) {
+  private async fetch(endpoint: string, queryParams = {}) {
     return this.makeRequest(endpoint, queryParams).then((resp) => {
       return new Promise((resolve, reject) => {
         if (!resp) {
@@ -72,8 +72,8 @@ export default class SlowZone {
           return reject(new Error(res.statusCode.toString()));
         }
 
-        let body: any[] = [],
-          json;
+        const body: Uint8Array[] = [];
+        let json;
 
         res.on("data", (chunk) => {
           body.push(chunk);
