@@ -7,6 +7,9 @@ updates:
     commit-message:
       prefix: "🤖 "
     groups:
+      typescript-eslint:
+        patterns:
+          - "@typescript-eslint*"
       eslint:
         patterns:
           - "eslint*"
