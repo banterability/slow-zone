@@ -25,7 +25,7 @@
     "prettier": "3.5.2",
     "timekeeper": "^2.0.0",
     "typescript": "^5.3.3",
-    "vitest": "^2.0.1"
+    "vitest": "^3.0.6"
   },
   "scripts": {
     "build": "tsc",
