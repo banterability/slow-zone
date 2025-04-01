@@ -9,13 +9,13 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "dependencies": {
-    "luxon": "3.6.0"
+    "luxon": "3.6.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.6.0",
-    "@types/luxon": "3.4.2",
+    "@types/luxon": "3.6.0",
     "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
