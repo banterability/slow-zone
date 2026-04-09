@@ -1,4 +1,4 @@
-## Unreleased
+## 4.3.0
 
 - Replaced luxon with dateline for time formatting
   - `arrivalString` uses AP-style formatting via dateline (e.g. "2:50 p.m." instead of "2:50 PM").
