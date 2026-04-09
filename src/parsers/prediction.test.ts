@@ -1,5 +1,4 @@
-import timekeeper from "timekeeper";
-import { describe, beforeAll, afterAll, test, expect } from "vitest";
+import { describe, beforeAll, afterAll, test, expect, vi } from "vitest";
 
 import { parsePrediction } from "./train.js";
 
@@ -33,11 +32,12 @@ const MOCK_ATTRIBUTES = {
 
 describe("Prediction", () => {
   beforeAll(() => {
-    timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2014, 9, 7, 14, 50, 57));
   });
 
   afterAll(() => {
-    timekeeper.reset();
+    vi.useRealTimers();
   });
 
   describe("arrivalTime", () => {
