@@ -1,0 +1,54 @@
+name: 🚦 CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  eslint:
+    name: 🔬 ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: ESLint
+        run: npm run lint
+
+  prettier:
+    name: 💅 Prettier
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Prettier
+        run: npm run prettier:check
+
+  typecheck:
+    name: 👾 TypeScript
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: TypeScript
+        run: npm run typecheck
+
+  vitest:
+    name: 🧪 Vitest
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/Chicago
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Vitest
+        run: npm test
