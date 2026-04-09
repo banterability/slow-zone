@@ -1,3 +1,9 @@
+## Unreleased
+
+- Removed luxon dependency
+  - Time formatting and calculations now use native APIs.
+  - Should be no user-facing changes, but buyer beware.
+
 ## 4.2.0
 
 - Updated types & dependencies

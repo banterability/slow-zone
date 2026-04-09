@@ -1,5 +1,3 @@
-import { DateTime } from "luxon";
-
 import type { TrainResponse } from "../types/responses.js";
 
 export function parseTrain(attributes: TrainResponse) {
@@ -68,13 +66,15 @@ export function parseRoute({ rn, rt, trDr }: TrainResponse) {
 
 export function parsePrediction({ arrT, prdt }: TrainResponse) {
   const arrivalTime = asDate(arrT);
-  const arrivalDt = DateTime.fromJSDate(arrivalTime);
   const predictionTime = asDate(prdt);
-  const predictionDt = DateTime.fromJSDate(predictionTime);
+  const diffMs = arrivalTime.getTime() - predictionTime.getTime();
 
-  const predictionAge = Math.round(arrivalDt.diff(predictionDt).as("seconds"));
-  const arrivalMinutes = Math.round(arrivalDt.diff(predictionDt).as("minutes"));
-  const arrivalString = arrivalDt.toLocaleString(DateTime.TIME_SIMPLE);
+  const predictionAge = Math.round(diffMs / 1000);
+  const arrivalMinutes = Math.round(diffMs / 60000);
+  const arrivalString = arrivalTime.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
 
   return {
     arrivalMinutes: arrivalMinutes,
