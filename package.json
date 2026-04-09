@@ -51,5 +51,8 @@
   ],
   "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "dateline": "^3.0.0"
   }
 }

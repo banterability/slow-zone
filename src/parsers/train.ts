@@ -1,3 +1,5 @@
+import Dateline from "dateline";
+
 import type { TrainResponse } from "../types/responses.js";
 
 export function parseTrain(attributes: TrainResponse) {
@@ -71,10 +73,7 @@ export function parsePrediction({ arrT, prdt }: TrainResponse) {
 
   const predictionAge = Math.round(diffMs / 1000);
   const arrivalMinutes = Math.round(diffMs / 60000);
-  const arrivalString = arrivalTime.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
+  const arrivalString = Dateline(arrivalTime).getAPTime();
 
   return {
     arrivalMinutes: arrivalMinutes,

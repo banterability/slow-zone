@@ -1,8 +1,8 @@
 ## Unreleased
 
-- Removed luxon dependency
-  - Time formatting and calculations now use native APIs.
-  - Should be no user-facing changes, but buyer beware.
+- Replaced luxon with dateline for time formatting
+  - `arrivalString` uses AP-style formatting via dateline (e.g. "2:50 p.m." instead of "2:50 PM").
+  - This is what the README has always said, but it wasn't true for the last few luxon-backed versions (sorry)
 
 ## 4.2.0
 
