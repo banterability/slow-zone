@@ -23,7 +23,6 @@
     "eslint-plugin-import": "^2.29.1",
     "globals": "^17.0.0",
     "prettier": "3.8.1",
-    "timekeeper": "^2.0.0",
     "typescript": "^6.0.2",
     "vitest": "^4.0.3"
   },

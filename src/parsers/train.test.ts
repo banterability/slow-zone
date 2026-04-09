@@ -1,5 +1,4 @@
-import timekeeper from "timekeeper";
-import { describe, beforeAll, afterAll, test, expect } from "vitest";
+import { describe, beforeAll, afterAll, test, expect, vi } from "vitest";
 
 import { parseTrain } from "./train.js";
 
@@ -28,11 +27,12 @@ const MOCK_TRAIN_JSON = JSON.stringify({
 describe("Train", () => {
   describe("toJSON", () => {
     beforeAll(() => {
-      timekeeper.freeze(new Date(2014, 9, 7, 14, 50, 57));
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2014, 9, 7, 14, 50, 57));
     });
 
     afterAll(() => {
-      timekeeper.reset();
+      vi.useRealTimers();
     });
 
     test("returns all attributes", () => {
