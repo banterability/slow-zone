@@ -53,6 +53,6 @@
     "test": "test"
   },
   "dependencies": {
-    "dateline": "^3.1.0"
+    "dateline": "^5.1.0"
   }
 }
