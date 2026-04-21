@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { request } from "node:https";
 
 import { parseTrain } from "./parsers/train.js";
@@ -7,7 +8,9 @@ export type Arrival = ReturnType<typeof parseTrain>;
 
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
-const PKG_VERSION = "4.2.0";
+export const VERSION: string = JSON.parse(
+  readFileSync(new URL("../package.json", import.meta.url), "utf-8"),
+).version;
 
 export default class SlowZone {
   apiKey: string;
@@ -70,7 +73,7 @@ export default class SlowZone {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "User-Agent": `slow-zone/${PKG_VERSION}`,
+        "User-Agent": `slow-zone/${VERSION}`,
       },
     };
 

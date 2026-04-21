@@ -1,6 +1,7 @@
 ## Unreleased
 
 - **Types:** Typed public method returns as `Arrival[]` instead of `unknown`, and exported the `Arrival` type. Consumers no longer need to cast the result of `getArrivalsForStation`, `getArrivalsForStop`, or `followTrain`.
+- **Bug:** Fixed the `User-Agent` header to report the actual package version. It was hardcoded to `slow-zone/4.2.0` in 4.3.0. The version is now read from `package.json` at load time and exported as `VERSION`.
 
 ## 4.3.0
 
