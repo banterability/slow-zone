@@ -3,6 +3,8 @@ import { request } from "node:https";
 import { parseTrain } from "./parsers/train.js";
 import { APIResponse } from "./types/responses.js";
 
+export type Arrival = ReturnType<typeof parseTrain>;
+
 const API_BASE_URL = "lapi.transitchicago.com";
 const API_BASE_PATH = "/api/1.0";
 const PKG_VERSION = "4.2.0";
@@ -14,15 +16,21 @@ export default class SlowZone {
     this.apiKey = options.apiKey;
   }
 
-  getArrivalsForStation(stationId: string | number, options = {}) {
+  getArrivalsForStation(
+    stationId: string | number,
+    options = {},
+  ): Promise<Arrival[]> {
     return this.getArrivals({ ...options, mapid: stationId });
   }
 
-  getArrivalsForStop(stopId: string | number, options = {}) {
+  getArrivalsForStop(
+    stopId: string | number,
+    options = {},
+  ): Promise<Arrival[]> {
     return this.getArrivals({ ...options, stpid: stopId });
   }
 
-  followTrain(runId: string | number) {
+  followTrain(runId: string | number): Promise<Arrival[]> {
     return this.fetch("ttfollow.aspx", { runnumber: runId });
   }
 
@@ -30,9 +38,9 @@ export default class SlowZone {
     return this.fetch("ttarrivals.aspx", options);
   }
 
-  private async fetch(endpoint: string, queryParams = {}) {
+  private async fetch(endpoint: string, queryParams = {}): Promise<Arrival[]> {
     return this.makeRequest(endpoint, queryParams).then((resp) => {
-      return new Promise((resolve, reject) => {
+      return new Promise<Arrival[]>((resolve, reject) => {
         if (!resp) {
           reject(new Error("invalid response"));
         }
