@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Types:** Typed public method returns as `Arrival[]` instead of `unknown`, and exported the `Arrival` type. Consumers no longer need to cast the result of `getArrivalsForStation`, `getArrivalsForStop`, or `followTrain`.
+
 ## 4.3.0
 
 - Replaced luxon with dateline for time formatting
