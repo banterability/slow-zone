@@ -63,6 +63,14 @@ describe("route", () => {
     });
   });
 
+  describe("run", () => {
+    test("does not cast string to integer", () => {
+      const run = parseRoute({ ...MOCK_ATTRIBUTES, rn: "018" }).run;
+
+      expect(run).toBe("018");
+    });
+  });
+
   describe("passes through unabbreviated routes", () => {
     test("handles the Red line", () => {
       const route = parseRoute({ ...MOCK_ATTRIBUTES, rt: "Red" }).name;

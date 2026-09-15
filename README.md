@@ -66,7 +66,7 @@ client.getArrivalsForStop(30091, {rt: "Brn"})
 Returns a Promise that either resolves with an array of objects, each describing a station stop, or rejects with an error.
 
 ```javascript
-sz.followTrain(410)
+sz.followTrain("018")
   .then(arrivals => /* do something */)
   .catch(err => /* do something */);
 ```
@@ -98,7 +98,7 @@ Slow Zone reformats and decorates the response from the CTA API to speed up comm
     "directionId": 5,
     "id": "Org",
     "name": "Orange",
-    "run": 715
+    "run": "715"
   },
   "station": {
     "id": 40160,
@@ -158,7 +158,7 @@ Data about the predicted train's route:
 | `route.directionId` | (Integer) The directionality of the run. See the documentation for specifics, but as a general rule `1` is north & west, `5` is south and east |
 | `route.id`          | (String) The CTA ID for the route                                                                                                              |
 | `route.name`        | (String) The name (color) of the route                                                                                                         |
-| `route.run`         | (Integer) A unique (that day) identifier for the run                                                                                           |
+| `route.run`         | (String) A unique (that day) identifier for the run                                                                                            |
 
 #### Station
 

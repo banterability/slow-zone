@@ -33,7 +33,7 @@ export default class SlowZone {
     return this.getArrivals({ ...options, stpid: stopId });
   }
 
-  followTrain(runId: string | number): Promise<Arrival[]> {
+  followTrain(runId: string): Promise<Arrival[]> {
     return this.fetch("ttfollow.aspx", { runnumber: runId });
   }
 

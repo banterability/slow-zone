@@ -23,7 +23,7 @@ exports[`Train > toJSON > returns all attributes 1`] = `
     "directionId": 5,
     "id": "Org",
     "name": "Orange",
-    "run": 715,
+    "run": "715",
   },
   "station": {
     "id": 40160,
