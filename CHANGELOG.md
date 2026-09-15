@@ -1,6 +1,6 @@
-## Unreleased
+## 5.0.0
 
-- **Breaking:** `route.run` was incorrectly cast to an integer. It's now the literal string we get from CTA (i.e. "018", not `18`).
+- **Bug:** `route.run` was incorrectly cast to an integer. It's now the literal string we get from CTA (i.e. "018", not `18`).
 
 ## 4.4.0
 
