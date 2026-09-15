@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Breaking:** `route.run` was incorrectly cast to an integer. It's now the literal string we get from CTA (i.e. "018", not `18`).
+
 ## 4.4.0
 
 - **Types:** Typed public method returns as `Arrival[]` instead of `unknown`, and exported the `Arrival` type. Consumers no longer need to cast the result of `getArrivalsForStation`, `getArrivalsForStop`, or `followTrain`.

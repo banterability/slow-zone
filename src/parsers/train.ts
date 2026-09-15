@@ -62,7 +62,7 @@ export function parseRoute({ rn, rt, trDr }: TrainResponse) {
     directionId: asInteger(trDr),
     id: rt,
     name: routeName,
-    run: asInteger(rn),
+    run: rn,
   };
 }
 
