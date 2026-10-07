@@ -63,7 +63,7 @@ client.getArrivalsForStop(30091, {rt: "Brn"})
 | ------- | ---------------------------------------------------------------------------- |
 | `runId` | A train run ID. Likely something you got from one of the above API requests. |
 
-Returns a Promise that either resolves with an array of objects, each describing a station stop, or rejects with an error.
+Returns a Promise that either resolves with an array of objects, each describing a station stop, or rejects with an error. Each stop carries the train's current position in `location`.
 
 ```javascript
 sz.followTrain("018")

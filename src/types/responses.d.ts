@@ -9,13 +9,15 @@ export type APIResponse = {
     tmst: string;
     errCd: string;
     errNm: string;
-    position?: {
-      lat: string;
-      lon: string;
-      heading: string;
-    };
+    position?: PositionResponse;
     eta: TrainResponse[];
   };
+};
+
+export type PositionResponse = {
+  lat: string;
+  lon: string;
+  heading: string;
 };
 
 export type TrainResponse = {

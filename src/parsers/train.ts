@@ -1,11 +1,14 @@
 import Dateline from "dateline";
 
-import type { TrainResponse } from "../types/responses.js";
+import type { PositionResponse, TrainResponse } from "../types/responses.js";
 
-export function parseTrain(attributes: TrainResponse) {
+export function parseTrain(
+  attributes: TrainResponse,
+  position?: PositionResponse,
+) {
   return {
     destination: parseDestination(attributes),
-    location: parseLocation(attributes),
+    location: parseLocation(attributes, position),
     prediction: parsePrediction(attributes),
     route: parseRoute(attributes),
     station: parseStation(attributes),
@@ -33,12 +36,20 @@ export function parseStation({ staId, stpId, staNm, stpDe }: TrainResponse) {
   };
 }
 
-export function parseLocation({ lat, lon, heading }: TrainResponse) {
-  if (lat && lon && heading) {
+export function parseLocation(
+  { lat, lon, heading }: TrainResponse,
+  position?: PositionResponse,
+) {
+  // ttfollow.aspx reports the train's position once, at ctatt.position,
+  // instead of on each stop row. Every row is the same train at the same
+  // instant, so the position stands in for a row's missing coordinates.
+  const coordinates = lat && lon && heading ? { lat, lon, heading } : position;
+
+  if (coordinates?.lat && coordinates.lon && coordinates.heading) {
     return {
-      latitude: asFloat(lat),
-      longitude: asFloat(lon),
-      heading: asInteger(heading),
+      latitude: asFloat(coordinates.lat),
+      longitude: asFloat(coordinates.lon),
+      heading: asInteger(coordinates.heading),
     };
   } else {
     return;

@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Feature:** Stops from `followTrain` now carry `location`. The follow endpoint reports the train's position once, at the top level, instead of on each stop, so every stop gets the train's current position.
+
 ## 5.0.1
 
 - **Bug:** `route.run` was incorrectly cast to an integer. It's now the literal string we get from CTA (i.e. "018", not `18`).
