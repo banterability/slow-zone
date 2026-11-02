@@ -42,16 +42,19 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "dateline": "^5.1.0"
+    "dateline": "5.1.0"
   },
   "devDependencies": {
-    "@types/node": "^26.0.0",
+    "@types/node": "26.6.6",
     "oxfmt": "0.75.0",
     "oxlint": "1.90.0",
     "typescript": "^6.0.2",
-    "vitest": "^5.0.0"
+    "vitest": "5.1.0"
   },
   "engines": {
     "node": ">=18"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
