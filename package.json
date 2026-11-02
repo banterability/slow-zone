@@ -2,19 +2,35 @@
   "name": "slow-zone",
   "version": "5.0.1",
   "description": "A client & wrapper for CTA 'L' arrival data",
-  "author": "Jeff Long",
-  "license": "MIT",
-  "exports": "./dist/index.js",
-  "type": "module",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
-  "devDependencies": {
-    "@types/node": "^26.0.0",
-    "oxfmt": "0.75.0",
-    "oxlint": "1.90.0",
-    "typescript": "^6.0.2",
-    "vitest": "^5.0.0"
+  "keywords": [
+    "chicago",
+    "cta",
+    "l",
+    "public transit",
+    "subway"
+  ],
+  "homepage": "https://github.com/banterability/slow-zone",
+  "bugs": {
+    "url": "https://github.com/banterability/slow-zone/issues"
   },
+  "license": "MIT",
+  "author": "Jeff Long",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banterability/slow-zone.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "!dist/**/*.test.js"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "dist/index.d.ts",
+  "exports": "./dist/index.js",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc",
@@ -25,33 +41,17 @@
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/banterability/slow-zone.git"
-  },
-  "bugs": {
-    "url": "https://github.com/banterability/slow-zone/issues"
-  },
-  "homepage": "https://github.com/banterability/slow-zone",
-  "keywords": [
-    "cta",
-    "subway",
-    "chicago",
-    "l",
-    "public transit"
-  ],
-  "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "!dist/**/*.test.js"
-  ],
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {
     "dateline": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "typescript": "^6.0.2",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

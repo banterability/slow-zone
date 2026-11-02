@@ -1,12 +1,7 @@
 import { describe, beforeAll, afterAll, test, expect, vi } from "vitest";
 
+import type { BooleanNumber, RouteId, TrainDirection } from "../types/responses.js";
 import { parsePrediction } from "./train.js";
-
-import type {
-  BooleanNumber,
-  RouteId,
-  TrainDirection,
-} from "../types/responses.js";
 
 const MOCK_ATTRIBUTES = {
   staId: "40160",
@@ -47,9 +42,7 @@ describe("Prediction", () => {
         arrT: "2014-10-07T14:50:27",
       });
 
-      expect(prediction.arrivalTime).toStrictEqual(
-        new Date(2014, 9, 7, 14, 50, 27),
-      );
+      expect(prediction.arrivalTime).toStrictEqual(new Date(2014, 9, 7, 14, 50, 27));
     });
   });
 
@@ -60,9 +53,7 @@ describe("Prediction", () => {
         prdt: "2014-10-07T14:49:27",
       });
 
-      expect(prediction.predictionTime).toStrictEqual(
-        new Date(2014, 9, 7, 14, 49, 27),
-      );
+      expect(prediction.predictionTime).toStrictEqual(new Date(2014, 9, 7, 14, 49, 27));
     });
   });
 
