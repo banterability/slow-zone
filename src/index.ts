@@ -19,17 +19,11 @@ export default class SlowZone {
     this.apiKey = options.apiKey;
   }
 
-  getArrivalsForStation(
-    stationId: string | number,
-    options = {},
-  ): Promise<Arrival[]> {
+  getArrivalsForStation(stationId: string | number, options = {}): Promise<Arrival[]> {
     return this.getArrivals({ ...options, mapid: stationId });
   }
 
-  getArrivalsForStop(
-    stopId: string | number,
-    options = {},
-  ): Promise<Arrival[]> {
+  getArrivalsForStop(stopId: string | number, options = {}): Promise<Arrival[]> {
     return this.getArrivals({ ...options, stpid: stopId });
   }
 
@@ -54,10 +48,7 @@ export default class SlowZone {
     );
   }
 
-  private async makeRequest(
-    endpoint: string,
-    queryParams = {},
-  ): Promise<APIResponse> {
+  private async makeRequest(endpoint: string, queryParams = {}): Promise<APIResponse> {
     const query = new URLSearchParams({
       ...queryParams,
       key: this.apiKey,

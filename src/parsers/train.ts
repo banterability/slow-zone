@@ -65,8 +65,7 @@ const ABBREVIATED_ROUTE_NAMES = {
 };
 
 export function parseRoute({ rn, rt, trDr }: TrainResponse) {
-  const routeName =
-    ABBREVIATED_ROUTE_NAMES[rt as keyof typeof ABBREVIATED_ROUTE_NAMES] || rt;
+  const routeName = ABBREVIATED_ROUTE_NAMES[rt as keyof typeof ABBREVIATED_ROUTE_NAMES] || rt;
 
   return {
     class: routeName.toLowerCase(),
@@ -107,15 +106,11 @@ export function asBoolean(booleanString: string): boolean {
 }
 
 export function asDate(timeString: string): Date {
-  const matches = timeString.match(
-    /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/,
-  );
+  const matches = timeString.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
 
   if (!matches) throw new Error("Not a date string");
 
-  const [year, month, day, hour, min, sec] = matches
-    .slice(1)
-    .map((value) => parseInt(value, 10));
+  const [year, month, day, hour, min, sec] = matches.slice(1).map((value) => parseInt(value, 10));
 
   return new Date(year, month - 1, day, hour, min, sec);
 }
