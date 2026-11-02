@@ -9,12 +9,10 @@ updates:
     commit-message:
       prefix: "🤖 "
     groups:
-      typescript-eslint:
+      oxc:
         patterns:
-          - "@typescript-eslint*"
-      eslint:
-        patterns:
-          - "eslint*"
+          - "oxfmt"
+          - "oxlint"
     cooldown:
       default-days: 3
 

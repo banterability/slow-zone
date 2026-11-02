@@ -14,25 +14,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  eslint:
-    name: 🔬 ESLint
+  oxlint:
+    name: 🔬 Oxlint
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
-      - name: ESLint
+      - name: Oxlint
         run: npm run lint
 
-  prettier:
-    name: 💅 Prettier
+  oxfmt:
+    name: 💅 Oxfmt
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/setup
-      - name: Prettier
-        run: npm run prettier:check
+      - name: Oxfmt
+        run: npm run fmt:check
 
   typecheck:
     name: 👾 TypeScript
