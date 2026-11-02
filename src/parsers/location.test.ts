@@ -1,12 +1,7 @@
 import { describe, test, expect } from "vitest";
 
+import type { BooleanNumber, RouteId, TrainDirection } from "../types/responses.js";
 import { parseLocation } from "./train.js";
-
-import type {
-  BooleanNumber,
-  RouteId,
-  TrainDirection,
-} from "../types/responses.js";
 
 const MOCK_ATTRIBUTES = {
   staId: "40160",

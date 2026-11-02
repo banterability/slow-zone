@@ -113,19 +113,14 @@ const ARRIVALS_RESPONSE = {
 };
 
 function respondWith(body: unknown) {
-  const implementation = (
-    _options: RequestOptions,
-    callback: (res: IncomingMessage) => void,
-  ) => {
+  const implementation = (_options: RequestOptions, callback: (res: IncomingMessage) => void) => {
     const res = new EventEmitter() as IncomingMessage;
     res.statusCode = 200;
     callback(res);
     res.emit("data", Buffer.from(JSON.stringify(body)));
     res.emit("end");
 
-    return { on: vi.fn(), end: vi.fn() } as unknown as ReturnType<
-      typeof request
-    >;
+    return { on: vi.fn(), end: vi.fn() } as unknown as ReturnType<typeof request>;
   };
 
   mockRequest.mockImplementation(implementation as typeof request);

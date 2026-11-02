@@ -43,9 +43,7 @@ export default class SlowZone {
     if (resp.ctatt.errCd != "0") {
       throw new Error(`[${resp.ctatt.errCd}] ${resp.ctatt.errNm}`);
     }
-    return resp.ctatt.eta.map((trainData) =>
-      parseTrain(trainData, resp.ctatt.position),
-    );
+    return resp.ctatt.eta.map((trainData) => parseTrain(trainData, resp.ctatt.position));
   }
 
   private async makeRequest(endpoint: string, queryParams = {}): Promise<APIResponse> {
