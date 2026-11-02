@@ -1,6 +1,6 @@
-## Unreleased
+## 6.0.0
 
-- **Feature:** Stops from `followTrain` now carry `location`. The follow endpoint reports the train's position once, at the top level, instead of on each stop, so every stop gets the train's current position.
+- **Feature:** Stops from `followTrain` now carry `location`. Each stop gets the train's current position.
 
 ## 5.0.1
 

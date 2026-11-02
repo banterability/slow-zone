@@ -1,6 +1,6 @@
 {
   "name": "slow-zone",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "A client & wrapper for CTA 'L' arrival data",
   "keywords": [
     "chicago",
