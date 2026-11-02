@@ -10,20 +10,18 @@
   "sideEffects": false,
   "devDependencies": {
     "@types/node": "^26.0.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import-x": "^4.16.2",
-    "prettier": "3.9.10",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
     "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.1",
     "vitest": "^5.0.0"
   },
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc",
-    "prettier": "prettier --write .",
-    "prettier:check": "prettier --check .",
+    "fmt": "oxfmt --write",
+    "fmt:check": "oxfmt --check",
     "test": "vitest",
-    "lint": "eslint .",
+    "lint": "oxlint --deny-warnings",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
